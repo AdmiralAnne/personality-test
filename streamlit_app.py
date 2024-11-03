@@ -145,6 +145,6 @@ for category, traits in questions.items():
         st.write(data["question"])
         option_labels = [option[0] for option in data["options"]]
         selected_option = st.radio(f"{trait}:", option_labels)
-        st.divider
+        st.divider()
         # Store the score associated with the selected option
         user_responses[category][trait] = dict(data["options"])[selected_option]
