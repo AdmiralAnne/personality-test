@@ -149,4 +149,52 @@ for category, traits in questions.items():
         # Store the score associated with the selected option
         user_responses[category][trait] = dict(data["options"])[selected_option]
 
-print(df)
+# Define a function to calculate and display scores
+def calculate_scores(selected_answers):
+    # Initialize scores for each trait
+    ocean_scores = {"Openness": 0, "Conscientiousness": 0, "Extraversion": 0, "Agreeableness": 0, "Neuroticism": 0}
+    riasec_scores = {"Realistic": 0, "Investigative": 0, "Artistic": 0, "Social": 0, "Enterprising": 0, "Conventional": 0}
+    
+    # Calculate scores based on the selected answers
+    for trait, answer in selected_answers.items():
+        if trait in ocean_scores:
+            ocean_scores[trait] += answer
+        elif trait in riasec_scores:
+            riasec_scores[trait] += answer
+    
+    return ocean_scores, riasec_scores
+
+# Store user's answers in a dictionary
+selected_answers = {}
+
+# Display questions for OCEAN traits
+st.header("OCEAN Traits")
+for trait, q_data in questions["OCEAN"].items():
+    st.subheader(trait)
+    selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=trait)
+    
+    # Store the selected score for each trait
+    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+
+# Display questions for RIASEC traits
+st.header("RIASEC Traits")
+for trait, q_data in questions["RIASEC"].items():
+    st.subheader(trait)
+    selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=trait)
+    
+    # Store the selected score for each trait
+    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+
+# Button to submit and display results
+if st.button("Calculate Scores"):
+    ocean_scores, riasec_scores = calculate_scores(selected_answers)
+
+    # Display the scores
+    st.header("Your Results")
+    st.subheader("OCEAN Scores")
+    for trait, score in ocean_scores.items():
+        st.write(f"{trait}: {score}")
+
+    st.subheader("RIASEC Scores")
+    for trait, score in riasec_scores.items():
+        st.write(f"{trait}: {score}")
