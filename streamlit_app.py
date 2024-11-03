@@ -148,3 +148,5 @@ for category, traits in questions.items():
         st.divider()
         # Store the score associated with the selected option
         user_responses[category][trait] = dict(data["options"])[selected_option]
+
+print(df)
