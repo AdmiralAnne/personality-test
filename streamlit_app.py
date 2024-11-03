@@ -124,31 +124,6 @@ questions = {
     }
 }
 
-
-def calculate_scores(user_responses):
-    ocean_scores = {trait: score for trait, score in user_responses['OCEAN'].items()}
-    riasec_scores = {interest: score for interest, score in user_responses['RIASEC'].items()}
-    return ocean_scores, riasec_scores
-
-def save_results(ocean_scores, riasec_scores, result_file='data/results.csv'):
-    # Save to CSV for tracking user responses
-    df = pd.DataFrame([ocean_scores | riasec_scores])
-    df.to_csv(result_file, mode='a', header=not pd.read_csv(result_file).empty, index=False)
-
-# Store user responses
-user_responses = {"OCEAN": {}, "RIASEC": {}}
-
-# Display questions and collect responses
-for category, traits in questions.items():
-    st.subheader(f"{category} Questions")
-    for trait, data in traits.items():
-        st.write(data["question"])
-        option_labels = [option[0] for option in data["options"]]
-        selected_option = st.radio(f"{trait}:", option_labels)
-        st.divider()
-        # Store the score associated with the selected option
-        user_responses[category][trait] = dict(data["options"])[selected_option]
-
 # Define a function to calculate and display scores
 def calculate_scores(selected_answers):
     # Initialize scores for each trait
