@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from questions import questions
 from utils import calculate_scores, save_results
 import pickle
 
