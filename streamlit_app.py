@@ -2,9 +2,7 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-st.title("RIASEC + OCEAN Career Prediction")
-
-st.header("Answer the following questions to find your ideal career path:")
+st.header("Answer these 11 questions to find your ideal career path: (beta version 0.1.0)")
 
 # questions.py
 questions = {
