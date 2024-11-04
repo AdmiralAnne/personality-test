@@ -145,22 +145,27 @@ def calculate_scores(selected_answers):
 selected_answers = {}
 
 # Display questions for OCEAN traits
-st.header("OCEAN Traits")
+st.markdown("### OCEAN Traits")  # Smaller heading
 for trait, q_data in questions["OCEAN"].items():
-    st.subheader(trait)
+    st.markdown(f"**{trait}**")  # Trait name bolded
+    # Display question in bold
+    st.markdown(f"#### {q_data['question']}")
     selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=trait)
     
     # Store the selected score for each trait
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
 
 # Display questions for RIASEC traits
-st.header("RIASEC Traits")
+st.markdown("### RIASEC Traits")  # Smaller heading
 for trait, q_data in questions["RIASEC"].items():
-    st.subheader(trait)
+    st.markdown(f"**{trait}**")  # Trait name bolded
+    # Display question in bold
+    st.markdown(f"#### {q_data['question']}")
     selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=trait)
     
     # Store the selected score for each trait
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+
 
 # Button to submit and display results
 if st.button("Calculate Scores"):
