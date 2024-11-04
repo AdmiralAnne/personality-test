@@ -171,3 +171,62 @@ if st.button("Calculate Scores"):
     st.subheader("RIASEC Scores")
     for trait, score in riasec_scores.items():
         st.write(f"{trait}: {score}")
+
+
+
+# Define a function to calculate and display scores
+def calculate_scores(selected_answers):
+    # Initialize scores for each trait
+    ocean_scores = {"Openness": 0, "Conscientiousness": 0, "Extraversion": 0, "Agreeableness": 0, "Neuroticism": 0}
+    riasec_scores = {"Realistic": 0, "Investigative": 0, "Artistic": 0, "Social": 0, "Enterprising": 0, "Conventional": 0}
+    
+    # Calculate scores based on the selected answers
+    for trait, answer in selected_answers.items():
+        if trait in ocean_scores:
+            ocean_scores[trait] += answer
+        elif trait in riasec_scores:
+            riasec_scores[trait] += answer
+
+    # Generate the RIASEC code by finding the top 3 traits
+    sorted_riasec = sorted(riasec_scores.items(), key=lambda x: x[1], reverse=True)
+    top_3_riasec = "".join([trait[0] for trait, score in sorted_riasec[:3]])  # Take initials of top 3
+
+    return ocean_scores, top_3_riasec
+
+# Streamlit app structure
+st.title("Personality and Career Assessment")
+st.write("Please answer the following questions to find out your RIASEC and OCEAN scores.")
+
+# Store user's answers in a dictionary
+selected_answers = {}
+
+# Display questions for OCEAN traits
+st.header("OCEAN Traits")
+for trait, q_data in questions["OCEAN"].items():
+    st.subheader(trait)
+    selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=trait)
+    
+    # Store the selected score for each trait
+    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+
+# Display questions for RIASEC traits
+st.header("RIASEC Traits")
+for trait, q_data in questions["RIASEC"].items():
+    st.subheader(trait)
+    selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=trait)
+    
+    # Store the selected score for each trait
+    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+
+# Button to submit and display results
+if st.button("Calculate Scores"):
+    ocean_scores, riasec_code = calculate_scores(selected_answers)
+
+    # Display the scores
+    st.header("Your Results")
+    st.subheader("OCEAN Scores")
+    for trait, score in ocean_scores.items():
+        st.write(f"{trait}: {score}")
+
+    st.subheader("RIASEC Code")
+    st.write(f"Top 3 RIASEC Traits Code: {riasec_code}")
