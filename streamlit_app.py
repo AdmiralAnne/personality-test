@@ -8,7 +8,7 @@ st.header("Answer these 11 questions to find your ideal career path: (beta versi
 questions = {
     "OCEAN": {
         "Openness": {
-            "question": "How would you describe your approach to new experiences and ideas?",
+            "question": "Your approach to new experiences and ideas?",
             "options": [
                 ("I love trying new things and exploring new ideas.", 40),
                 ("I enjoy new experiences, but I also appreciate familiarity.", 30),
@@ -18,7 +18,7 @@ questions = {
             ]
         },
         "Conscientiousness": {
-            "question": "How organized and diligent are you with tasks and responsibilities?",
+            "question": "How organized and diligent are you with tasks?",
             "options": [
                 ("I am highly organized and very responsible.", 40),
                 ("I am usually organized and try to meet my responsibilities.", 30),
@@ -28,7 +28,7 @@ questions = {
             ]
         },
         "Extraversion": {
-            "question": "How would you describe your comfort level in social settings?",
+            "question": "Describe your comfort level in social settings",
             "options": [
                 ("I thrive in social settings and love interacting with people.", 40),
                 ("I enjoy socializing but also value some alone time.", 30),
@@ -38,7 +38,7 @@ questions = {
             ]
         },
         "Agreeableness": {
-            "question": "How would you describe your tendency to be kind and cooperative?",
+            "question": "Describe your tendency to be kind and cooperative",
             "options": [
                 ("I am extremely empathetic and value harmony.", 40),
                 ("I am usually kind and cooperative, but set boundaries when needed.", 30),
@@ -48,7 +48,7 @@ questions = {
             ]
         },
         "Neuroticism": {
-            "question": "How would you describe your emotional stability?",
+            "question": "Can you Describe your emotional stability?",
             "options": [
                 ("I am calm and rarely experience negative emotions.", 0),
                 ("I am generally stable but sometimes get stressed.", 10),
@@ -60,7 +60,7 @@ questions = {
     },
     "RIASEC": {
         "Realistic": {
-            "question": "How do you feel about working with tools, equipment, or physical tasks?",
+            "question": "How do you feel about: working with tools, equipment, or physical tasks?",
             "options": [
                 ("I love working with my hands and using equipment.", 40),
                 ("I enjoy physical tasks but also like problem-solving.", 30),
@@ -80,7 +80,7 @@ questions = {
             ]
         },
         "Artistic": {
-            "question": "How would you describe your interest in creative expression or artistic pursuits?",
+            "question": "Describe your interest in: creative expression or artistic pursuits?",
             "options": [
                 ("I am highly creative and passionate about artistic pursuits.", 40),
                 ("I enjoy being creative but also like structure.", 30),
@@ -90,7 +90,7 @@ questions = {
             ]
         },
         "Social": {
-            "question": "How would you describe your preference for helping or teaching others?",
+            "question": "Describe your preference for: helping or teaching others.",
             "options": [
                 ("I find great fulfillment in helping others.", 40),
                 ("I enjoy helping others when I can.", 30),
@@ -100,7 +100,7 @@ questions = {
             ]
         },
         "Enterprising": {
-            "question": "How would you describe your tendency to lead or persuade others?",
+            "question": "Describe your tendency to lead or persuade others?",
             "options": [
                 ("I love taking charge and influencing others.", 40),
                 ("I enjoy leadership but also value teamwork.", 30),
