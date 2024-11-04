@@ -141,10 +141,6 @@ def calculate_scores(selected_answers):
 
     return ocean_scores, riasec_scores, top_3_riasec_code
 
-# Streamlit app structure
-st.title("Personality and Career Assessment")
-st.write("Please answer the following questions to find out your RIASEC and OCEAN scores.")
-
 # Store user's answers in a dictionary
 selected_answers = {}
 
