@@ -187,7 +187,7 @@ if st.button("Calculate Scores"):
 
 
 # Initialize the OpenAI client
-client = OpenAI(base_url="https://api.zukijourney.com/v1", api_key='zu-636d4796d047677e3eeb0293e32c99ba')
+client = OpenAI(base_url="https://helixmind.online/v1", api_key='helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM')
 
 # Create a session state variable to store chat history
 if 'messages' not in st.session_state:
