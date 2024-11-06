@@ -197,8 +197,10 @@ if st.button("Get My Top 15 Jobs"):
         generated_prompt_query = f"""
             My RIASEC score is: {top_3_riasec_code}.
             My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
-            Extraversion, Agreeableness, Neuroticism respectively).
+            Extraversion, Agreeableness, Neuroticism respectively). 40 being the max score.
             Based on these traits, give me a list of the top 15 jobs that would be suitable for me.
+            Done make thes jobs too common or vague . . go into more niche categories and fetch interesting titles. Just titles, description needed.
+            
             """
         with st.spinner('Fetching your top 15 jobs...'):
             ai_response = get_ai_response(generated_prompt_query)
