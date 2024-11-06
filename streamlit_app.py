@@ -165,27 +165,6 @@ for trait, q_data in questions["RIASEC"].items():
     # Store the selected score for each trait
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
 
-
-# Button to submit and display results
-if st.button("Calculate Scores"):
-    ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
-
-    # Display the OCEAN scores
-    st.header("Your Results")
-    st.subheader("OCEAN Scores")
-    for trait, score in ocean_scores.items():
-        st.write(f"{trait}: {score}")
-
-    # Display the RIASEC scores
-    st.subheader("RIASEC Scores")
-    for trait, score in riasec_scores.items():
-        st.write(f"{trait}: {score}")
-
-    # Display the top 3 RIASEC code
-    st.subheader("Top 3 RIASEC Code")
-    st.write(f"Your top 3 RIASEC code is: {top_3_riasec_code}")
-
-
 # Initialize OpenAI client
 client = OpenAI(base_url="https://helixmind.online/v1", api_key='helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM')
 
