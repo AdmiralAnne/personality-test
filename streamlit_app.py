@@ -193,9 +193,6 @@ if st.button("Get My Top 15 Jobs"):
         Based on these traits, give me a list of the top 15 jobs that would be suitable for me.
         """
     with st.spinner('Fetching your top 15 jobs...'):
-        try:
             ai_response = get_ai_response(generated_prompt_query)
             st.subheader("Top 15 Job Recommendations")
             st.write(ai_response)
-         except Exception as e:
-            st.error(f"Error fetching job recommendations: {str(e)}")
