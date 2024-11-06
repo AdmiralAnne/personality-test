@@ -47,7 +47,7 @@ questions = {
             ]
         },
         "Neuroticism": {
-            "question": "Can you Describe your emotional stability?",
+            "question": "Can you describe your emotional stability?",
             "options": [
                 ("I am calm and rarely experience negative emotions.", 0),
                 ("I am generally stable but sometimes get stressed.", 10),
@@ -59,7 +59,7 @@ questions = {
     },
     "RIASEC": {
         "Realistic": {
-            "question": "How do you feel about: working with tools, equipment, or physical tasks?",
+            "question": "How do you feel about working with tools, equipment, or physical tasks?",
             "options": [
                 ("I love working with my hands and using equipment.", 40),
                 ("I enjoy physical tasks but also like problem-solving.", 30),
@@ -79,7 +79,7 @@ questions = {
             ]
         },
         "Artistic": {
-            "question": "Describe your interest in: creative expression or artistic pursuits?",
+            "question": "Describe your interest in creative expression or artistic pursuits?",
             "options": [
                 ("I am highly creative and passionate about artistic pursuits.", 40),
                 ("I enjoy being creative but also like structure.", 30),
@@ -89,7 +89,7 @@ questions = {
             ]
         },
         "Social": {
-            "question": "Describe your preference for: helping or teaching others.",
+            "question": "Describe your preference for helping or teaching others.",
             "options": [
                 ("I find great fulfillment in helping others.", 40),
                 ("I enjoy helping others when I can.", 30),
@@ -174,6 +174,10 @@ for trait, q_data in questions["RIASEC"].items():
 # Button to calculate scores
 if st.button("Calculate Scores"):
     ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
+    st.session_state['ocean_scores'] = ocean_scores
+    st.session_state['riasec_scores'] = riasec_scores
+    st.session_state['top_3_riasec_code'] = top_3_riasec_code
+
     st.header("Your Results")
     st.subheader("OCEAN Scores")
     for trait_name, score_value in ocean_scores.items():
@@ -183,16 +187,22 @@ if st.button("Calculate Scores"):
         st.write(f"{trait_name_riasec}: {score_value_riasec}")
     st.subheader("Top-3 RIASEC Code:")
     st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
-# Enable button for job recommendations
+
+# Button for job recommendations
 if st.button("Get My Top 15 Jobs"):
-    formatted_ocean_values_str = ' '.join([str(ocean_scores[key]) for key in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]])
-    generated_prompt_query = f"""
-        My RIASEC score is: {top_3_riasec_code}.
-        My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
-        Extraversion, Agreeableness, Neuroticism respectively).
-        Based on these traits, give me a list of the top 15 jobs that would be suitable for me.
-        """
-    with st.spinner('Fetching your top 15 jobs...'):
+    if 'ocean_scores' in st.session_state and 'top_3_riasec_code' in st.session_state:
+        ocean_scores = st.session_state['ocean_scores']
+        top_3_riasec_code = st.session_state['top_3_riasec_code']
+        formatted_ocean_values_str = ' '.join([str(ocean_scores[key]) for key in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]])
+        generated_prompt_query = f"""
+            My RIASEC score is: {top_3_riasec_code}.
+            My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
+            Extraversion, Agreeableness, Neuroticism respectively).
+            Based on these traits, give me a list of the top 15 jobs that would be suitable for me.
+            """
+        with st.spinner('Fetching your top 15 jobs...'):
             ai_response = get_ai_response(generated_prompt_query)
             st.subheader("Top 15 Job Recommendations")
             st.write(ai_response)
+    else:
+        st.error("Please calculate your scores first.")
