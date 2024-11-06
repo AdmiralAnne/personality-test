@@ -1,6 +1,5 @@
 import streamlit as st
-import pandas as pd
-import pickle
+from openai import OpenAI
 
 st.header("Answer these 11 questions to find your ideal career path: (beta version 0.1.0)")
 
@@ -185,3 +184,44 @@ if st.button("Calculate Scores"):
     # Display the top 3 RIASEC code
     st.subheader("Top 3 RIASEC Code")
     st.write(f"Your top 3 RIASEC code is: {top_3_riasec_code}")
+
+
+# Initialize the OpenAI client
+client = OpenAI(base_url="https://api.zukijourney.com/v1", api_key='zu-636d4796d047677e3eeb0293e32c99ba')
+
+# Create a session state variable to store chat history
+if 'messages' not in st.session_state:
+    st.session_state.messages = [{"role": "system", "content": "You are a helpful assistant."}]
+
+# Function to send user input to OpenAI and get response
+def get_ai_response(user_input):
+    # Append user message to chat history
+    st.session_state.messages.append({"role": "user", "content": user_input})
+
+    # Get the response from the OpenAI model
+    response = client.chat.completions.create(
+        model="caramelldansen-1",  # or gpt-4o-mini, claude-3-haiku, etc.
+        messages=st.session_state.messages
+    )
+
+    # Extract and return the AI's response
+    ai_response = response.choices[0].message.content
+    return ai_response
+
+# User input field
+user_input = st.text_input("Enter your message:")
+
+# When the user sends a message
+if user_input:
+    # Get the response from the API
+    ai_response = get_ai_response(user_input)
+    
+    # Append the AI's response to the chat history
+    st.session_state.messages.append({"role": "assistant", "content": ai_response})
+
+    # Display the entire chat history
+    for message in st.session_state.messages:
+        if message['role'] == 'user':
+            st.markdown(f"**You:** {message['content']}")
+        else:
+            st.markdown(f"**AI:** {message['content']}")
