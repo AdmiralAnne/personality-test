@@ -253,16 +253,6 @@ questions = {
     }
 }
 
-# Example usage to print combined questions:
-for model, traits in questions.items():
-    print(f"\n{model} Model:")
-    for trait, questions_list in traits.items():
-        print(f"  {trait}:")
-        for question in questions_list:
-            print(f"    Question: {question['question']}")
-            for option, score in question['options']:
-                print(f"      - {option} ({score})")
-
 # Initialize OpenAI client
 client = OpenAI(base_url="https://helixmind.online/v1", api_key='helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM')
 
