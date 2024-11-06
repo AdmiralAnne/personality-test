@@ -1,7 +1,7 @@
 import streamlit as st
 from openai import OpenAI
 
-st.header("Answer these 11 questions to find your ideal career path: (beta version 0.1.0)")
+st.header("Answer these 11 questions to find your ideal career path: (beta version 0.2.0)")
 
 # questions.py
 questions = {
@@ -199,16 +199,15 @@ if st.button("Get My Top 15 Jobs"):
             My RIASEC score is: {top_3_riasec_code}.
             My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
             Extraversion, Agreeableness, Neuroticism respectively). 40 being the max score.
-            Based on these traits, give me a list of the top 15 jobs that would be suitable for me.
+            Based on these traits, give me a list of the top 20 jobs that would be suitable for me.
             Done make thes jobs too common or vague . . go into more niche categories and fetch interesting titles. 
             Just write the jom titles, no description needed.
 
-            write a short paragraph summary of my personality in general - to motivate me. and tell me my strong points and weak points as well.
-            keep it short and sweet 
+            also write a short summary talking about my prsonality and the general areas of work I fit in, such as catagory of career or fields i might be good at.
             """
-        with st.spinner('Fetching your top 15 jobs...'):
+        with st.spinner('Fetching your top 20 jobs...'):
             ai_response = get_ai_response(generated_prompt_query)
-            st.subheader("Top 15 Job Recommendations")
+            st.subheader("Your personality fits the following possible occupations....")
             st.write(ai_response)
     else:
         st.error("Please calculate your scores first.")
