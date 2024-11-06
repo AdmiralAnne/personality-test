@@ -186,42 +186,121 @@ if st.button("Calculate Scores"):
     st.write(f"Your top 3 RIASEC code is: {top_3_riasec_code}")
 
 
-# Initialize the OpenAI client
+# Initialize OpenAI client
 client = OpenAI(base_url="https://helixmind.online/v1", api_key='helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM')
 
 # Create a session state variable to store chat history
 if 'messages' not in st.session_state:
     st.session_state.messages = [{"role": "system", "content": "You are a helpful assistant."}]
 
-# Function to send user input to OpenAI and get response
-def get_ai_response(user_input):
-    # Append user message to chat history
-    st.session_state.messages.append({"role": "user", "content": user_input})
+# Function to send user input or prompt to OpenAI and get response
+def get_ai_response(prompt):
+    # Append system message with the generated prompt/query for job recommendations
+    st.session_state.messages.append({"role": "system", "content": prompt})
 
     # Get the response from the OpenAI model
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",  # or gpt-4o-mini, claude-3-haiku, etc.
+        model="gpt-3.5-turbo",  
         messages=st.session_state.messages
     )
 
-    # Extract and return the AI's response
+    # Extract and return AI's response content
     ai_response = response.choices[0].message.content
+    
+    # Clear messages after each request if needed, but keep initial system instruction.
     return ai_response
 
-# User input field
-user_input = st.text_input("Enter your message:")
-
-# When the user sends a message
-if user_input:
-    # Get the response from the API
-    ai_response = get_ai_response(user_input)
+# Function to calculate OCEAN and RIASEC scores
+def calculate_scores(selected_answers):
+    ocean_scores = {"Openness": 0, "Conscientiousness": 0, "Extraversion": 0, 
+                    "Agreeableness": 0, "Neuroticism": 0}
     
-    # Append the AI's response to the chat history
-    st.session_state.messages.append({"role": "assistant", "content": ai_response})
+    riasec_scores = {"Realistic": 0, "Investigative": 0, "Artistic": 0,
+                     "Social": 0, "Enterprising": 0, "Conventional": 0}
+    
+    for trait, answer in selected_answers.items():
+        if trait in ocean_scores:
+            ocean_scores[trait] += answer
+        elif trait in riasec_scores:
+            riasec_scores[trait] += answer
 
-    # Display the entire chat history
-    for message in st.session_state.messages:
-        if message['role'] == 'user':
-            st.markdown(f"**You:** {message['content']}")
-        else:
-            st.markdown(f"**AI:** {message['content']}")
+    sorted_riasec = sorted(riasec_scores.items(), key=lambda x: x[1], reverse=True)
+    
+    top_3_riasec_code = "".join([trait[0] for trait, score in sorted_riasec[:3]])
+
+    return ocean_scores, riasec_scores, top_3_riasec_code
+
+
+# Store user's answers in a dictionary during form submission.
+selected_answers = {}
+
+# Display OCEAN traits questions and collect responses.
+st.markdown("### OCEAN Traits")
+for trait, q_data in questions["OCEAN"].items():
+    st.markdown(f"**{trait}**")
+    
+    selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=trait)
+    
+    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+
+# Display RIASEC traits questions and collect responses.
+st.markdown("### RIASEC Traits")
+for trait, q_data in questions["RIASEC"].items():
+    st.markdown(f"**{trait}**")
+
+    selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=trait)
+    
+    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+
+
+# Button that calculates scores when clicked.
+if st.button("Calculate Scores"):
+    
+   # Call function to calculate scores based on user answers.
+   ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
+
+   # Display calculated OCEAN & RIASEC scores along with Top-3 RIASEC code.
+   st.header("Your Results")
+   
+   st.subheader("OCEAN Scores")
+   for trait_name, score_value in ocean_scores.items():
+       st.write(f"{trait_name}: {score_value}")
+
+   st.subheader("RIASEC Scores")
+   for trait_name_riasec , score_value_riasec in riasec_scores.items():
+       st.write(f"{trait_name_riasec }: {score_value_riasec }")
+
+   st.subheader("Top-3 RIASEC Code:")
+   st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
+
+
+if 'ocean_scores' in locals() and 'top_3_riasec_code' in locals(): 
+        
+    if st.button("Get My Top 15 Jobs"):
+            
+        ### Generate prompt text dynamically based on calculated scores ###
+           
+        # Format Ocean values as space-separated string (e.g., '30 40 ...')
+        formatted_ocean_values_str = ' '.join([str(ocean_scores[key]) 
+                                               for key in ["Openness", "Conscientiousness",
+                                                           "Extraversion", "Agreeableness", "Neuroticism"]])
+        
+        # Construct Prompt To Send GPT-based Model Query String
+        generated_prompt_query = f"""
+            My RIASEC score is: {top_3_riasec_code}.
+            My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
+            Extraversion, Agreeableness, Neuroticism respectively).
+            Based on these traits, give me a list of the top 15 jobs that would be suitable for me.
+        """
+        
+        with st.spinner('Fetching your top 15 jobs...'):
+            try:
+                # Get AI response by sending this prompt to OpenAI API
+                ai_response = get_ai_response(generated_prompt_query)
+                
+                # Display AI's output (the list of jobs)
+                st.subheader("Top 15 Job Recommendations")
+                st.write(ai_response)
+                
+            except Exception as e:
+                st.error(f"Error fetching job recommendations: {str(e)}")
