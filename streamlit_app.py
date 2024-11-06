@@ -132,7 +132,7 @@ if 'messages' not in st.session_state:
 def get_ai_response(prompt):
     st.session_state.messages.append({"role": "system", "content": prompt})
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o-mini",
         messages=st.session_state.messages
     )
     ai_response = response.choices[0].message.content
