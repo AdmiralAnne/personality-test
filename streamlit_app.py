@@ -183,20 +183,19 @@ if st.button("Calculate Scores"):
         st.write(f"{trait_name_riasec}: {score_value_riasec}")
     st.subheader("Top-3 RIASEC Code:")
     st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
-
-    # Enable button for job recommendations
-    if st.button("Get My Top 15 Jobs"):
-        formatted_ocean_values_str = ' '.join([str(ocean_scores[key]) for key in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]])
-        generated_prompt_query = f"""
-            My RIASEC score is: {top_3_riasec_code}.
-            My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
-            Extraversion, Agreeableness, Neuroticism respectively).
-            Based on these traits, give me a list of the top 15 jobs that would be suitable for me.
+# Enable button for job recommendations
+if st.button("Get My Top 15 Jobs"):
+    formatted_ocean_values_str = ' '.join([str(ocean_scores[key]) for key in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]])
+    generated_prompt_query = f"""
+        My RIASEC score is: {top_3_riasec_code}.
+        My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
+        Extraversion, Agreeableness, Neuroticism respectively).
+        Based on these traits, give me a list of the top 15 jobs that would be suitable for me.
         """
-        with st.spinner('Fetching your top 15 jobs...'):
-            try:
-                ai_response = get_ai_response(generated_prompt_query)
-                st.subheader("Top 15 Job Recommendations")
-                st.write(ai_response)
-            except Exception as e:
-                st.error(f"Error fetching job recommendations: {str(e)}")
+     with st.spinner('Fetching your top 15 jobs...'):
+        try:
+            ai_response = get_ai_response(generated_prompt_query)
+            st.subheader("Top 15 Job Recommendations")
+            st.write(ai_response)
+         except Exception as e:
+            st.error(f"Error fetching job recommendations: {str(e)}")
