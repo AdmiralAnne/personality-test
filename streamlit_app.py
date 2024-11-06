@@ -200,7 +200,7 @@ def get_ai_response(user_input):
 
     # Get the response from the OpenAI model
     response = client.chat.completions.create(
-        model="gpt-4o-mini",  # or gpt-4o-mini, claude-3-haiku, etc.
+        model="gpt-3.5-turbo",  # or gpt-4o-mini, claude-3-haiku, etc.
         messages=st.session_state.messages
     )
 
