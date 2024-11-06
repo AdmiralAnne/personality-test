@@ -4,7 +4,7 @@ from openai import OpenAI
 st.header("Answer these 11 questions to find your ideal career path: (beta version 0.2.0)")
 
 # questions.py
-questions = {
+question = {
     "OCEAN": {
         "Openness": [
             {
