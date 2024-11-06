@@ -200,8 +200,11 @@ if st.button("Get My Top 15 Jobs"):
             My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
             Extraversion, Agreeableness, Neuroticism respectively). 40 being the max score.
             Based on these traits, give me a list of the top 15 jobs that would be suitable for me.
-            Done make thes jobs too common or vague . . go into more niche categories and fetch interesting titles. Just titles, description needed.
-            
+            Done make thes jobs too common or vague . . go into more niche categories and fetch interesting titles. 
+            Just write the jom titles, no description needed.
+
+            write a short paragraph summary of my personality in general - to motivate me. and tell me my strong points and weak points as well.
+            keep it short and sweet 
             """
         with st.spinner('Fetching your top 15 jobs...'):
             ai_response = get_ai_response(generated_prompt_query)
