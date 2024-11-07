@@ -181,13 +181,13 @@ if st.button("Calculate Scores"):
     st.session_state['riasec_scores'] = riasec_scores
     st.session_state['top_3_riasec_code'] = top_3_riasec_code
 
-    st.header("Your Results")
-    st.subheader("OCEAN Scores")
-    for trait_name, score_value in ocean_scores.items():
-        st.write(f"{trait_name}: {score_value}")
-    st.subheader("RIASEC Scores")
-    for trait_name_riasec, score_value_riasec in riasec_scores.items():
-        st.write(f"{trait_name_riasec}: {score_value_riasec}")
+    #st.header("Your Results")
+    #st.subheader("OCEAN Scores")
+    #for trait_name, score_value in ocean_scores.items():
+    #    st.write(f"{trait_name}: {score_value}")
+    #st.subheader("RIASEC Scores")
+    #for trait_name_riasec, score_value_riasec in riasec_scores.items():
+    #    st.write(f"{trait_name_riasec}: {score_value_riasec}")
     st.subheader("Top-3 RIASEC Code:")
     st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
 
