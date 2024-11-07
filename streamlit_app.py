@@ -174,6 +174,42 @@ for trait, q_data in questions["RIASEC"].items():
     selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=f"RIASEC_{trait}")
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
 
+# start
+# Display OCEAN traits questions with larger question text and smaller trait label
+st.markdown("### OCEAN Traits")
+for trait, q_data in questions["OCEAN"].items():
+    # Display trait with a smaller font size
+    st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
+    
+    # Display question with a larger font size
+    st.markdown(f"<p style='font-size:18px;'>{q_data['question']}</p>", unsafe_allow_html=True)
+    
+    # Display answer options
+    selected_answer = st.radio(
+        "", 
+        options=[opt[0] for opt in q_data["options"]],
+        key=trait
+    )
+    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+
+# Display RIASEC traits questions with similar styling
+st.markdown("### RIASEC Traits")
+for trait, q_data in questions["RIASEC"].items():
+    # Display trait with a smaller font size
+    st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
+    
+    # Display question with a larger font size
+    st.markdown(f"<p style='font-size:18px;'>{q_data['question']}</p>", unsafe_allow_html=True)
+    
+    # Display answer options
+    selected_answer = st.radio(
+        "", 
+        options=[opt[0] for opt in q_data["options"]],
+        key=f"RIASEC_{trait}"
+    )
+    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+#end
+
 # Button to calculate scores
 if st.button("Calculate Scores"):
     ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
