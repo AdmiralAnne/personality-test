@@ -384,6 +384,7 @@ import streamlit as st
 
 st.divider()
 st.divider()
+st.divider()
 # Expander with Important Links
 with st.expander("Important Links"):
     st.markdown("### Sources")
@@ -405,6 +406,10 @@ with st.expander("Future Prospects for the Project"):
 
 with st.expander("Architecture / Diagrams"):
     st.image("https://i.ibb.co/vmK5tyH/diagram.png", caption="System Architecture")
+
+st.divider()
+st.divider()
+st.divider()
 
 st.info(
     """
