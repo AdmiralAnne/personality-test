@@ -191,34 +191,32 @@ if st.button("Calculate Scores"):
     st.subheader("Top-3 RIASEC Code:")
     st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
 
-# Assuming ocean_scores and riasec_scores dictionaries are available
-# e.g., ocean_scores = {'Openness': 25, 'Conscientiousness': 20, ...}
-# riasec_scores = {'Realistic': 15, 'Investigative': 18, ...}
+# Check if scores are available before plotting
+if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
+    ocean_df = pd.DataFrame(list(st.session_state['ocean_scores'].items()), columns=['Trait', 'Score'])
+    riasec_df = pd.DataFrame(list(st.session_state['riasec_scores'].items()), columns=['Trait', 'Score'])
 
-# Convert scores to DataFrames for easy manipulation and visualization
-ocean_df = pd.DataFrame(list(ocean_scores.items()), columns=['Trait', 'Score'])
-riasec_df = pd.DataFrame(list(riasec_scores.items()), columns=['Trait', 'Score'])
+    # Set up the figure and axes
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
-# Set up the figure and axes
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+    # Plot OCEAN scores
+    ocean_df.plot(kind='bar', x='Trait', y='Score', ax=ax1, color='skyblue', legend=False)
+    ax1.set_title('OCEAN Personality Scores')
+    ax1.set_ylabel('Score')
+    ax1.set_xlabel('Trait')
+    ax1.tick_params(axis='x', rotation=45)
 
-# Plot OCEAN scores
-ocean_df.plot(kind='bar', x='Trait', y='Score', ax=ax1, color='skyblue', legend=False)
-ax1.set_title('OCEAN Personality Scores')
-ax1.set_ylabel('Score')
-ax1.set_xlabel('Trait')
-ax1.tick_params(axis='x', rotation=45)
+    # Plot RIASEC scores
+    riasec_df.plot(kind='bar', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
+    ax2.set_title('RIASEC Career Interest Scores')
+    ax2.set_ylabel('Score')
+    ax2.set_xlabel('Trait')
+    ax2.tick_params(axis='x', rotation=45)
 
-# Plot RIASEC scores
-riasec_df.plot(kind='bar', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
-ax2.set_title('RIASEC Career Interest Scores')
-ax2.set_ylabel('Score')
-ax2.set_xlabel('Trait')
-ax2.tick_params(axis='x', rotation=45)
-
-# Adjust layout and display the plot
-plt.tight_layout()
-plt.show()
+    # Adjust layout and display the plot
+    st.pyplot(fig)
+else:
+    st.warning("Please calculate your scores first by clicking the 'Calculate Scores' button.")
 
 # Button for job recommendations
 if st.button("Get My Top 15 Jobs"):
