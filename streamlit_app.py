@@ -74,9 +74,9 @@ st.sidebar.write("""
 
 # Add sources with prominent display
 st.sidebar.info(
-    "🔗 Explore more on job satisfaction and career alignment:\n"
-    "[How Americans View Their Jobs](https://www.pewresearch.org/social-trends/2023/03/30/how-americans-view-their-jobs/)\n\n"
-    "[More Insights on American Job Satisfaction](https://www.pewresearch.org/social-trends/2023/03/30/how-americans-view-their-jobs/)"
+    "🔗 LINKS:\n"
+    "\n [How Americans View Their Jobs](https://www.pewresearch.org/social-trends/2023/03/30/how-americans-view-their-jobs/)\n\n"
+    "\n [More Insights on American Job Satisfaction](https://www.pewresearch.org/social-trends/2023/03/30/how-americans-view-their-jobs/)"
 )
 
 # sidebar
