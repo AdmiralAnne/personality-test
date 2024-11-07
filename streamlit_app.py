@@ -176,6 +176,7 @@ for trait, q_data in questions["OCEAN"].items():
         options=[opt[0] for opt in q_data["options"]],
         key=trait
     )
+    st.divider()
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
 
 # Display RIASEC traits questions with similar styling
@@ -193,6 +194,7 @@ for trait, q_data in questions["RIASEC"].items():
         options=[opt[0] for opt in q_data["options"]],
         key=f"RIASEC_{trait}"
     )
+    st.divider()
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
 #end
 
