@@ -42,9 +42,6 @@ vis = {
 
 df_sb = pd.DataFrame(vis)
 
-# Set page layout to wide
-st.set_page_config(layout="wide")
-
 # Sidebar Content
 st.sidebar.title("Career Satisfaction Insights")
 st.sidebar.info("Key Insights on Job Satisfaction and Career Fit Awareness")
