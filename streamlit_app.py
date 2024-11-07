@@ -5,6 +5,51 @@ import matplotlib.pyplot as plt
 
 st.header("Answer these 11 questions to find your ideal career path: (beta version 0.2.0)")
 
+
+# sidebar
+
+# Data for visualization
+vis = {
+    "Metric": [
+        "Prefer jobs aligned with interests",
+        "Report meaningful work as essential",
+        "Remain in jobs that don't fit due to security",
+        "Satisfaction influenced by income beyond threshold",
+        "Find their jobs meaningful overall"
+    ],
+    "Percentage (%)": [58, 70, 36, 20, 36]
+}
+
+df_sb = pd.DataFrame(vis)
+
+# Sidebar Expander with Visualization
+with st.sidebar.expander("Career Satisfaction Insights", expanded=False):
+    st.write("This chart displays key factors influencing job satisfaction and awareness of career fit, "
+             "based on recent studies and surveys.")
+
+    # Bar chart of survey data
+    fig, ax = plt.subplots()
+    ax.barh(df['Metric'], df_sb['Percentage (%)'], color=['#4caf50', '#2196f3', '#ff9800', '#e91e63', '#9c27b0'])
+    ax.set_xlabel('Percentage (%)')
+    ax.set_title('Key Findings on Job Satisfaction and Career Fit Awareness')
+    for i, (value, label) in enumerate(zip(df_sb['Percentage (%)'], df_sb['Metric'])):
+        ax.text(value + 1, i, f"{value}%", va='center')  # Add labels to each bar
+
+    # Display the chart
+    st.pyplot(fig)
+
+    # Summary
+    st.write("""
+        - **58%** prefer roles aligned with their strengths and interests.
+        - **70%** emphasize the importance of meaningful work over higher income.
+        - **36%** stay in roles that don’t align with personal values for security reasons.
+        - **20%** show limited satisfaction increase with income beyond a certain point.
+        - **36%** find their roles meaningful, suggesting a disconnect between roles and values.
+    """)
+
+
+# sidebar
+
 # questions.py
 questions = {
     "OCEAN": {
