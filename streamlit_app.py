@@ -266,7 +266,15 @@ if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
 else:
     st.warning("Please calculate your scores first by clicking the 'Calculate Scores' button.")
 
+#chart
 
+# Create an expander
+with st.expander("See the Chart"):
+    # Display the image inside the expander
+    st.image("chart1.jpeg", caption="OCEAN Traits Image")
+    st.image("chart2.jpeg", caption="RIASEC Traits Image")
+
+# chart
 
 # Button for job recommendations
 if st.button("Get My Top 15 Jobs"):
