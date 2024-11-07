@@ -9,115 +9,115 @@ st.header("Answer these 11 questions to find your ideal career path: (beta versi
 questions = {
     "OCEAN": {
         "Openness": {
-            "question": "How do you feel about trying new experiences and ideas?",
+            "question": "You find yourself in a new city with some free time. What are you most likely to do?",
             "options": [
-                ("I am always excited to try new things and explore new ideas.", 35),
-                ("I usually enjoy new experiences, but I appreciate some familiar things too.", 30),
-                ("I am comfortable with new things, but I prefer a balance.", 22),
-                ("I like sticking to what I know best.", 12),
-                ("I am cautious and rarely seek new experiences.", 5)
+                ("Explore the lesser-known neighborhoods and try new activities.", 35),
+                ("Visit a few recommended spots but stick to familiar activities.", 30),
+                ("Balance some exploring with some relaxation in familiar places.", 22),
+                ("Find a comfortable, familiar place to relax and avoid exploring too much.", 12),
+                ("Stay in, preferring the comfort of routine activities.", 5)
             ]
         },
         "Conscientiousness": {
-            "question": "How would you describe your approach to being organized and responsible?",
+            "question": "You have an upcoming deadline for an important project, but your friends invite you out. How do you handle this?",
             "options": [
-                ("I am very organized and always meet my responsibilities.", 35),
-                ("I am usually organized and try to stay on top of things.", 30),
-                ("I try to stay organized but sometimes struggle.", 22),
-                ("I am somewhat disorganized but manage to get by.", 12),
-                ("I prefer a relaxed approach and don’t stress much about organization.", 5)
+                ("Politely decline, prioritizing your project to ensure it's done thoroughly.", 35),
+                ("Set aside time to work but try to join for a little while.", 30),
+                ("Try to balance your project and going out, even if it means a bit less sleep.", 22),
+                ("Go out and plan to catch up on work afterward, even if rushed.", 12),
+                ("Accept the invite, enjoying spontaneity, and complete the project as best you can.", 5)
             ]
         },
         "Extraversion": {
-            "question": "How do you feel in social situations?",
+            "question": "You’re at a gathering where you don’t know many people. How do you respond?",
             "options": [
-                ("I love being around people and thrive in social settings.", 35),
-                ("I enjoy socializing but also appreciate some alone time.", 30),
-                ("I am comfortable in small groups but avoid large gatherings.", 22),
-                ("I prefer spending time alone or with just a few close friends.", 12),
-                ("I am very reserved and avoid social settings as much as possible.", 5)
+                ("Dive into the crowd, starting conversations with as many people as possible.", 35),
+                ("Approach a few groups, joining in and sharing stories.", 30),
+                ("Chat with one or two people you know or sit back and observe.", 22),
+                ("Find a quieter spot to engage with only one or two people.", 12),
+                ("Prefer to keep to yourself and observe rather than actively engaging.", 5)
             ]
         },
         "Agreeableness": {
-            "question": "How would you describe your level of kindness and cooperation?",
+            "question": "A friend has a strong opinion about a topic, but you disagree. How do you handle the situation?",
             "options": [
-                ("I am very empathetic and always aim for harmony.", 35),
-                ("I am usually kind and cooperative but set boundaries when needed.", 30),
-                ("I try to be agreeable, but I speak up when necessary.", 22),
-                ("I can be competitive and prioritize my own needs.", 12),
-                ("I am skeptical of others and tend to be assertive.", 5)
+                ("Listen and respond kindly, focusing on understanding their perspective.", 35),
+                ("Acknowledge their points while gently sharing your view.", 30),
+                ("Consider their side but stay neutral in sharing your opinion.", 22),
+                ("Offer your differing perspective with minimal compromise.", 12),
+                ("Challenge their view, preferring honesty over harmony.", 5)
             ]
         },
         "Neuroticism": {
-            "question": "How would you describe your emotional stability?",
+            "question": "You’ve made a minor mistake at work. How do you feel and respond?",
             "options": [
-                ("I am calm and rarely experience negative emotions.", 5),
-                ("I am generally stable but get stressed from time to time.", 12),
-                ("I have a good balance but experience occasional mood swings.", 22),
-                ("I feel anxious or worried somewhat often.", 30),
-                ("I often experience anxiety, stress, or worry.", 35)
+                ("Worry and analyze the mistake, feeling self-critical.", 35),
+                ("Feel disappointed but work on fixing it quickly.", 30),
+                ("Recognize the error, feeling mildly affected but moving on.", 22),
+                ("Acknowledge it but feel little stress, seeing it as a small error.", 12),
+                ("Remain calm, viewing it as a learning opportunity without worry.", 5)
             ]
         }
     },
     "RIASEC": {
         "Realistic": {
-            "question": "Do you enjoy working with tools, equipment, or doing hands-on tasks?",
+            "question": "You’re presented with two tasks: one involving hands-on work and the other requiring desk research. Which do you prefer?",
             "options": [
-                ("I love working with my hands and using tools or equipment.", 35),
-                ("I enjoy hands-on tasks but like problem-solving too.", 30),
-                ("I don’t mind hands-on work occasionally.", 22),
-                ("I prefer tasks that don’t involve physical work.", 12),
-                ("I avoid hands-on or physical tasks when possible.", 5)
+                ("Eagerly choose the hands-on work.", 35),
+                ("Prefer hands-on tasks but are open to balancing both.", 30),
+                ("Choose based on the task’s impact, whether hands-on or research-based.", 22),
+                ("Lean towards research but are open to a mix.", 12),
+                ("Opt for the research, preferring to avoid physical tasks.", 5)
             ]
         },
         "Investigative": {
-            "question": "Do you enjoy researching or analyzing information?",
+            "question": "You encounter an unfamiliar concept. How do you handle it?",
             "options": [
-                ("I am very interested in researching and exploring new ideas.", 35),
-                ("I like problem-solving and analyzing data.", 30),
-                ("I do some research, but I prefer more practical tasks.", 22),
-                ("I don’t mind occasional research tasks.", 12),
-                ("I avoid research or analysis if I can.", 5)
+                ("Dive into research, seeking detailed understanding and answers.", 35),
+                ("Look into it as time allows, appreciating learning.", 30),
+                ("Seek general understanding and move on.", 22),
+                ("Prefer to rely on familiar knowledge, avoiding in-depth research.", 12),
+                ("Avoid focusing on it, favoring practical solutions over research.", 5)
             ]
         },
         "Artistic": {
-            "question": "Do you enjoy creative activities and artistic expression?",
+            "question": "You have some free time. How would you most enjoy spending it?",
             "options": [
-                ("I am very creative and enjoy artistic activities.", 35),
-                ("I like being creative but need some structure.", 30),
-                ("I engage in creative activities from time to time.", 22),
-                ("I don’t have much interest in creative pursuits.", 12),
-                ("I avoid artistic or creative activities.", 5)
+                ("Working on a creative project, expressing yourself through art or writing.", 35),
+                ("Exploring a creative activity but also enjoying structured hobbies.", 30),
+                ("Balancing creativity with other, more routine hobbies.", 22),
+                ("Prefer practical tasks over creativity, only engaging occasionally.", 12),
+                ("Enjoy structured activities without creative elements.", 5)
             ]
         },
         "Social": {
-            "question": "Do you enjoy helping or teaching others?",
+            "question": "A community group is seeking volunteers to help organize an event. What is your response?",
             "options": [
-                ("I find great fulfillment in helping and teaching others.", 35),
-                ("I enjoy helping others when possible.", 30),
-                ("I sometimes help others, but it’s not a main focus for me.", 22),
-                ("I rarely help others unless necessary.", 12),
-                ("I prefer focusing on my own tasks and interests.", 5)
+                ("Immediately volunteer, excited to engage and support others.", 35),
+                ("Offer help if time allows, appreciating group activities.", 30),
+                ("Join the group but prefer smaller, specific tasks.", 22),
+                ("Join as an observer but prefer minimal involvement.", 12),
+                ("Avoid participating, preferring individual activities.", 5)
             ]
         },
         "Enterprising": {
-            "question": "Do you like to lead or persuade others?",
+            "question": "You’re in a meeting where a new project leader needs to be chosen. How do you react?",
             "options": [
-                ("I love taking the lead and influencing people.", 35),
-                ("I enjoy leading but also value collaboration.", 30),
-                ("I like a mix of leading and following.", 22),
-                ("I’m not very interested in leadership roles.", 12),
-                ("I avoid taking charge and prefer staying in the background.", 5)
+                ("Step up as a leader, eager to guide the team.", 35),
+                ("Volunteer, interested in organizing and leading parts of the project.", 30),
+                ("Offer support but prefer not to lead.", 22),
+                ("Avoid leadership roles, focusing on following the plan.", 12),
+                ("Prefer staying in the background and avoid taking charge.", 5)
             ]
         },
         "Conventional": {
-            "question": "How do you feel about organizing or managing details?",
+            "question": "You’re working on a task that lacks clear guidelines. What do you do?",
             "options": [
-                ("I am very organized and detail-oriented.", 35),
-                ("I like organizing but also appreciate flexibility.", 30),
-                ("I manage details but don’t prioritize it highly.", 22),
-                ("I prefer focusing on the big picture.", 12),
-                ("I avoid detail-oriented tasks whenever possible.", 5)
+                ("Create a structure for yourself, setting up steps and organization.", 35),
+                ("Feel comfortable structuring tasks but can be flexible.", 30),
+                ("Prefer a balance of structure with some flexibility.", 22),
+                ("Struggle with setting up guidelines, preferring more flexibility.", 12),
+                ("Avoid structure, working best without specific rules or steps.", 5)
             ]
         }
     }
