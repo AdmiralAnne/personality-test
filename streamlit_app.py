@@ -168,7 +168,7 @@ for trait, q_data in questions["OCEAN"].items():
     st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
     
     # Display question with a larger font size
-    st.markdown(f"<p style='font-size:18px;'>{q_data['question']}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size:24px;'>{q_data['question']}</p>", unsafe_allow_html=True)
     
     # Display answer options
     selected_answer = st.radio(
@@ -185,7 +185,7 @@ for trait, q_data in questions["RIASEC"].items():
     st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
     
     # Display question with a larger font size
-    st.markdown(f"<p style='font-size:18px;'>{q_data['question']}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size:24px;'>{q_data['question']}</p>", unsafe_allow_html=True)
     
     # Display answer options
     selected_answer = st.radio(
