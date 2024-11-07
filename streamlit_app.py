@@ -403,7 +403,7 @@ with st.expander("Future Prospects for the Project"):
         """
     )
 
-with st.expander("Future Prospects for the Project"):
+with st.expander("Architecture / Diagrams"):
     st.image("https://i.ibb.co/vmK5tyH/diagram.png", caption="System Architecture")
 
 st.info(
