@@ -404,8 +404,8 @@ with st.expander("Future Prospects for the Project"):
 st.info(
     """
     #### Special thanks to: 
-    - **Meet Dudhat - U21CS483 (Having fun at home in Gujarat)**
-    - **Jagadeesh - U21CS464 (Thin Guy, Likes Research and Coding )**
+    - **Meet Dudhat - U21CS483 ( Lead developer, Having fun at home in Gujarat)**
+    - **Jagadeesh - U21CS464 ( Thin Guy, Likes Research and Coding )**
     - **Dr P Vasuki ( Beloved Guide - Guiding Pillar of our project)**
     - **Kameshwari Ma'am ( Best Mentor award )**
     - **Marjiba - u21cs474 ( Creative Solutions and Designer )**
