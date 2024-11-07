@@ -29,7 +29,7 @@ with st.sidebar.expander("Career Satisfaction Insights", expanded=False):
 
     # Bar chart of survey data
     fig, ax = plt.subplots()
-    ax.barh(df['Metric'], df_sb['Percentage (%)'], color=['#4caf50', '#2196f3', '#ff9800', '#e91e63', '#9c27b0'])
+    ax.barh(df_sb['Metric'], df_sb['Percentage (%)'], color=['#4caf50', '#2196f3', '#ff9800', '#e91e63', '#9c27b0'])
     ax.set_xlabel('Percentage (%)')
     ax.set_title('Key Findings on Job Satisfaction and Career Fit Awareness')
     for i, (value, label) in enumerate(zip(df_sb['Percentage (%)'], df_sb['Metric'])):
