@@ -276,6 +276,10 @@ for trait, q_data in questions["RIASEC"].items():
     st.divider()
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
 #end
+domain_str=st.text_input(label, value="Your Domain or Area of Interest. ", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, placeholder=None, disabled=False, label_visibility="visible")
+# input start
+
+# input end
 
 # Button to calculate scores
 if st.button("Calculate Scores"):
