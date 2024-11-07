@@ -392,14 +392,14 @@ with st.expander("Important Links"):
     st.write("[Google Colab Notebook](https://colab.research.google.com/drive/1n_qZKStxZpfBBr0pLDm40sLjZ-ifgur2?usp=sharing)")
 
 # Section on Future Prospects
-st.info(
-    """
-    ### Future Prospects for the Project
-    - **Enhanced Model Customization**: aim to refine the model, incorporating user feedback.
-    - **More Curated Questions**: The questionnaire will be expanded with more nuanced questions.
-    - **Guidance for Career Paths**: suggest additional resources to help users explore career paths that align with their interests.
-    """
-)
+with st.expander("Future Prospects for the Project"):
+    st.info(
+        """
+        - **Enhanced Model Customization**: aim to refine the model, incorporating user feedback.
+        - **More Curated Questions**: The questionnaire will be expanded with more nuanced questions.
+        - **Guidance for Career Paths**: suggest additional resources to help users explore career paths that align with their interests.
+        """
+    )
 
 st.info(
     """
@@ -408,6 +408,6 @@ st.info(
     - **Jagadeesh - U21CS464 (Thin Guy, Likes Research and Coding )**
     - **Dr P Vasuki ( Beloved Guide - Guiding Pillar of our project)**
     - **Kameshwari Ma'am ( Best Mentor award )**
-    - *Marjiba - u21cs474 ( Creative Solutions and Designer )*
+    - **Marjiba - u21cs474 ( Creative Solutions and Designer )**
     """
 )
