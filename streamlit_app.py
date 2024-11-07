@@ -379,3 +379,23 @@ if st.button("Get My Top 15 Jobs"):
             st.write(ai_response)
     else:
         st.error("Please calculate your scores first.")
+
+import streamlit as st
+
+
+# Expander with Important Links
+with st.expander("Important Links"):
+    st.markdown("### Sources")
+    st.write("[Questionnaire Sources](https://docs.google.com/spreadsheets/d/1qUE0sGZfC5jxx-gi-HfJR0wmeRWJUZS6HexJvWu9agE/edit?usp=sharing)")
+    st.write("[Dataset Sources](https://docs.google.com/spreadsheets/d/1wBFU0WdFfEDZGT21f3agZtHEyVInEMC_4maf3zkMsTA/edit?gid=0#gid=0)")
+    st.write("[Google Colab Notebook](https://colab.research.google.com/drive/1n_qZKStxZpfBBr0pLDm40sLjZ-ifgur2?usp=sharing)")
+
+# Section on Future Prospects
+st.info(
+    """
+    ### Future Prospects for the Career Questionnaire Project
+    - **Enhanced Model Customization**: Future updates will aim to refine the model, incorporating user feedback to better predict and match career preferences.
+    - **More Curated Questions**: The questionnaire will be expanded with more nuanced questions for deeper insights and more accurate personality and career suggestions.
+    - **Guidance for Career Paths**: Our model will also suggest additional resources to help users explore career paths that align with their personalities and interests.
+    """
+)
