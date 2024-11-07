@@ -269,7 +269,7 @@ else:
 
 # table
 
-# Data for OCEAN and RIASEC traits with qualities
+# Corrected data with equal-length lists
 traits_data = {
     "Trait": [
         "Openness", "Openness",
@@ -332,6 +332,7 @@ traits_df = pd.DataFrame(traits_data)
 with st.expander("Show Traits and Qualities Table"):
     st.markdown("### Traits and Their Qualities (High and Low Levels)")
     st.table(traits_df)
+
 # table
 
 # Button for job recommendations
