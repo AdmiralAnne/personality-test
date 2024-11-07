@@ -219,28 +219,47 @@ if st.button("Calculate Scores"):
 if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
     ocean_df = pd.DataFrame(list(st.session_state['ocean_scores'].items()), columns=['Trait', 'Score'])
     riasec_df = pd.DataFrame(list(st.session_state['riasec_scores'].items()), columns=['Trait', 'Score'])
+    
+    # Set up figure with two subplots: one for OCEAN line plots, one for RIASEC bar chart
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+    
+    # Define trait labels for the OCEAN plot extremes
+    extremes = {
+        "Openness": ("Closed", "Open"),
+        "Conscientiousness": ("Carefree", "Conscientious"),
+        "Extraversion": ("Introvert", "Extrovert"),
+        "Agreeableness": ("Assertive", "Agreeable"),
+        "Neuroticism": ("Calm", "Anxious")
+    }
+    
+    # Plot each OCEAN trait as a horizontal line with the score as a marker
+    for idx, (trait, score) in enumerate(st.session_state['ocean_scores'].items()):
+        ax1.plot([0, 40], [idx, idx], 'k-', lw=1)  # Draw horizontal line from 0 to 40 (max score)
+        ax1.plot(score, idx, 'o', color="skyblue", markersize=8)  # Plot the user's score as a dot
+        ax1.text(0, idx, extremes[trait][0], va='center', ha='right')  # Left label
+        ax1.text(40, idx, extremes[trait][1], va='center', ha='left')  # Right label
+    
+    # Customize OCEAN plot
+    ax1.set_title("OCEAN Personality Traits")
+    ax1.set_yticks(range(len(st.session_state['ocean_scores'])))
+    ax1.set_yticklabels(list(st.session_state['ocean_scores'].keys()))
+    ax1.set_xlim(-5, 45)
+    ax1.set_xticks([])  # Remove x-axis ticks for cleanliness
+    ax1.invert_yaxis()  # Invert y-axis to match question order
+    ax1.grid(False)  # Remove grid for a cleaner look
+    
+    # Plot RIASEC traits as a bar chart
+    riasec_df.plot(kind='barh', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
+    ax2.set_title("RIASEC Career Interest Scores")
+    ax2.set_xlabel("Score")
+    ax2.set_ylabel("Trait")
 
-    # Set up the figure and axes
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
-
-    # Plot OCEAN scores
-    ocean_df.plot(kind='bar', x='Trait', y='Score', ax=ax1, color='skyblue', legend=False)
-    ax1.set_title('OCEAN Personality Scores')
-    ax1.set_ylabel('Score')
-    ax1.set_xlabel('Trait')
-    ax1.tick_params(axis='x', rotation=45)
-
-    # Plot RIASEC scores
-    riasec_df.plot(kind='bar', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
-    ax2.set_title('RIASEC Career Interest Scores')
-    ax2.set_ylabel('Score')
-    ax2.set_xlabel('Trait')
-    ax2.tick_params(axis='x', rotation=45)
-
-    # Adjust layout and display the plot
+    # Adjust layout and display the plot in Streamlit
+    plt.tight_layout()
     st.pyplot(fig)
 else:
     st.warning("Please calculate your scores first by clicking the 'Calculate Scores' button.")
+
 
 # Button for job recommendations
 if st.button("Get My Top 15 Jobs"):
