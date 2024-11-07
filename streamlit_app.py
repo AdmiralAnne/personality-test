@@ -377,6 +377,8 @@ if st.button("Get My Top 15 Jobs"):
             Don't make thes jobs too vague . . go into more niche categories and fetch interesting titles. 
             Just write the job titles, no description needed.
 
+            based on: this dom {domain_str}
+
             also write a very crispt and short "40 words" summary talking about my prsonality and the general areas of work I fit in, such as catagory of career or fields i might be good at.
             tone: keep it super friendlt and chill.
             """
