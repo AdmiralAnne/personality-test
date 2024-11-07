@@ -47,8 +47,7 @@ vis = {
 df_sb = pd.DataFrame(vis)
 
 # Sidebar Content
-st.sidebar.title("Career Satisfaction Insights")
-st.sidebar.info("Key Insights on Job Satisfaction and Career Fit Awareness")
+# st.sidebar.info("Key Insights on Job Satisfaction and Career Fit Awareness")
 st.sidebar.write(
     "This chart displays key factors influencing job satisfaction and awareness of career fit, "
     "based on recent studies and surveys."
