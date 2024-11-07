@@ -254,7 +254,7 @@ for trait, q_data in questions["OCEAN"].items():
     selected_answer = st.radio(
         "", 
         options=[opt[0] for opt in q_data["options"]],
-        key=trait,index=None
+        key=trait
     )
     st.divider()
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
