@@ -135,7 +135,7 @@ if 'messages' not in st.session_state:
 def get_ai_response(prompt):
     st.session_state.messages.append({"role": "system", "content": prompt})
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4o",
         messages=st.session_state.messages
     )
     ai_response = response.choices[0].message.content
@@ -294,9 +294,9 @@ if st.button("Get My Top 15 Jobs"):
             Don't make thes jobs too vague . . go into more niche categories and fetch interesting titles. 
             Just write the job titles, no description needed.
 
-            also write a very xrispt and short summary talking about my prsonality and the general areas of work I fit in, such as catagory of career or fields i might be good at.
+            also write a very crispt and short summary talking about my prsonality and the general areas of work I fit in, such as catagory of career or fields i might be good at.
 
-            tone: keep it super friendlt and chill, even add a bit on witty empathetic humour or punch lines.
+            tone: keep it super friendlt and chill.
             """
         with st.spinner('Fetching your top 20 jobs...'):
             ai_response = get_ai_response(generated_prompt_query)
