@@ -267,6 +267,74 @@ else:
     st.warning("Please calculate your scores first by clicking the 'Calculate Scores' button.")
 
 
+# table
+
+
+# Data for OCEAN and RIASEC traits with qualities
+traits_data = {
+    "Trait": [
+        "Openness", "Openness",
+        "Conscientiousness", "Conscientiousness",
+        "Extraversion", "Extraversion",
+        "Agreeableness", "Agreeableness",
+        "Neuroticism", "Neuroticism",
+        "Realistic", "Realistic",
+        "Investigative", "Investigative",
+        "Artistic", "Artistic",
+        "Social", "Social",
+        "Enterprising", "Enterprising",
+        "Conventional", "Conventional"
+    ],
+    "Level": [
+        "High", "Low",
+        "High", "Low",
+        "High", "Low",
+        "High", "Low",
+        "High", "Low",
+        "High", "Low",
+        "High", "Low",
+        "High", "Low",
+        "High", "Low",
+        "High", "Low"
+    ],
+    "Qualities": [
+        # OCEAN Traits
+        "Creative, open to new experiences, curious, imaginative",  # High Openness
+        "Prefers routine, practical, resistant to change",  # Low Openness
+        "Organized, responsible, self-disciplined, reliable",  # High Conscientiousness
+        "Spontaneous, flexible, may struggle with deadlines",  # Low Conscientiousness
+        "Outgoing, energetic, enthusiastic, enjoys socializing",  # High Extraversion
+        "Reserved, independent, enjoys solitude",  # Low Extraversion
+        "Empathetic, cooperative, compassionate, values harmony",  # High Agreeableness
+        "Assertive, competitive, more skeptical of others",  # Low Agreeableness
+        "Emotionally sensitive, prone to stress, self-aware",  # High Neuroticism
+        "Calm, emotionally resilient, composed under pressure",  # Low Neuroticism
+
+        # RIASEC Traits
+        "Practical, hands-on, enjoys physical tasks",  # High Realistic
+        "Prefers intellectual or abstract tasks",  # Low Realistic
+        "Analytical, curious, enjoys problem-solving",  # High Investigative
+        "Prefers practical or concrete tasks",  # Low Investigative
+        "Creative, expressive, enjoys creating things",  # High Artistic
+        "Prefers structured tasks and routines",  # Low Artistic
+        "Helpful, supportive, enjoys teaching or assisting",  # High Social
+        "Prefers independent tasks, less focused on social interaction",  # Low Social
+        "Persuasive, ambitious, enjoys leadership roles",  # High Enterprising
+        "Prefers structured environments without leadership roles",  # Low Enterprising
+        "Detail-oriented, prefers structured tasks",  # High Conventional
+        "Enjoys flexibility, less inclined toward structure"  # Low Conventional
+    ]
+}
+
+# Create a DataFrame
+traits_df = pd.DataFrame(traits_data)
+
+# Display an expander with the table
+with st.expander("Show Traits and Qualities Table"):
+    st.markdown("### Traits and Their Qualities (High and Low Levels)")
+    st.table(traits_df)
+
+# table
 
 # Button for job recommendations
 if st.button("Get My Top 15 Jobs"):
