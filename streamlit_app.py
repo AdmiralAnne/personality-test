@@ -1,5 +1,7 @@
 import streamlit as st
 from openai import OpenAI
+import pandas as pd
+import matplotlib.pyplot as plt
 
 st.header("Answer these 11 questions to find your ideal career path: (beta version 0.2.0)")
 
@@ -188,6 +190,35 @@ if st.button("Calculate Scores"):
         st.write(f"{trait_name_riasec}: {score_value_riasec}")
     st.subheader("Top-3 RIASEC Code:")
     st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
+
+# Assuming ocean_scores and riasec_scores dictionaries are available
+# e.g., ocean_scores = {'Openness': 25, 'Conscientiousness': 20, ...}
+# riasec_scores = {'Realistic': 15, 'Investigative': 18, ...}
+
+# Convert scores to DataFrames for easy manipulation and visualization
+ocean_df = pd.DataFrame(list(ocean_scores.items()), columns=['Trait', 'Score'])
+riasec_df = pd.DataFrame(list(riasec_scores.items()), columns=['Trait', 'Score'])
+
+# Set up the figure and axes
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+
+# Plot OCEAN scores
+ocean_df.plot(kind='bar', x='Trait', y='Score', ax=ax1, color='skyblue', legend=False)
+ax1.set_title('OCEAN Personality Scores')
+ax1.set_ylabel('Score')
+ax1.set_xlabel('Trait')
+ax1.tick_params(axis='x', rotation=45)
+
+# Plot RIASEC scores
+riasec_df.plot(kind='bar', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
+ax2.set_title('RIASEC Career Interest Scores')
+ax2.set_ylabel('Score')
+ax2.set_xlabel('Trait')
+ax2.tick_params(axis='x', rotation=45)
+
+# Adjust layout and display the plot
+plt.tight_layout()
+plt.show()
 
 # Button for job recommendations
 if st.button("Get My Top 15 Jobs"):
