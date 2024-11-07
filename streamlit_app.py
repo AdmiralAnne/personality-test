@@ -382,7 +382,8 @@ if st.button("Get My Top 15 Jobs"):
 
 import streamlit as st
 
-
+st.divider()
+st.divider()
 # Expander with Important Links
 with st.expander("Important Links"):
     st.markdown("### Sources")
@@ -394,8 +395,8 @@ with st.expander("Important Links"):
 st.info(
     """
     ### Future Prospects for the Career Questionnaire Project
-    - **Enhanced Model Customization**: Future updates will aim to refine the model, incorporating user feedback to better predict and match career preferences.
-    - **More Curated Questions**: The questionnaire will be expanded with more nuanced questions for deeper insights and more accurate personality and career suggestions.
-    - **Guidance for Career Paths**: Our model will also suggest additional resources to help users explore career paths that align with their personalities and interests.
+    - **Enhanced Model Customization**: aim to refine the model, incorporating user feedback.
+    - **More Curated Questions**: The questionnaire will be expanded with more nuanced questions.
+    - **Guidance for Career Paths**: suggest additional resources to help users explore career paths that align with their interests.
     """
 )
