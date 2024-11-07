@@ -22,9 +22,6 @@ vis = {
 
 df_sb = pd.DataFrame(vis)
 
-# Set sidebar width to occupy more space using Streamlit's config (put this at the top of your Streamlit script)
-st.set_page_config(layout="wide")
-
 # Sidebar Expander with Visualization
 with st.sidebar.expander("Career Satisfaction Insights", expanded=False):
     st.info("Key Insights on Career Satisfaction and Fit Awareness")
