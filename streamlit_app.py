@@ -271,8 +271,11 @@ else:
 # Create an expander
 with st.expander("See the Chart"):
     # Display the image inside the expander
-    st.image(".streamlit/chart1.jpg", caption="OCEAN Traits Image")
-    st.image(".streamlit/chart2.jpg", caption="RIASEC Traits Image")
+    st.image("https://i.ibb.co/MkNmm31/chart1.jpg", caption="OCEAN Traits Image")
+    st.image("https://i.ibb.co/SXxHm97/chart2.jpg", caption="RIASEC Traits Image")
+
+# links: https://i.ibb.co/MkNmm31/chart1.jpg
+# https://i.ibb.co/SXxHm97/chart2.jpg
 
 # chart
 
