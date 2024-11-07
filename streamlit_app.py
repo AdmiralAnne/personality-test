@@ -209,7 +209,7 @@ client = OpenAI(base_url="https://helixmind.online/v1", api_key='helix-4WaTFs3z-
 
 # Create a session state variable to store chat history
 if 'messages' not in st.session_state:
-    st.session_state.messages = [{"role": "system", "content": "You are a helpful assistant."}]
+    st.session_state.messages = [{"role": "system", "content": ""}]
 
 # Function to send user input or prompt to OpenAI and get response
 def get_ai_response(prompt):
@@ -254,7 +254,7 @@ for trait, q_data in questions["OCEAN"].items():
     selected_answer = st.radio(
         "", 
         options=[opt[0] for opt in q_data["options"]],
-        key=trait
+        key=trait,index=None
     )
     st.divider()
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
