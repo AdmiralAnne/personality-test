@@ -160,20 +160,6 @@ def calculate_scores(selected_answers):
 # Store user's answers in a dictionary
 selected_answers = {}
 
-# Display OCEAN traits questions
-st.markdown("### OCEAN Traits")
-for trait, q_data in questions["OCEAN"].items():
-    st.markdown(f"**{trait}**")
-    selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=trait)
-    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
-
-# Display RIASEC traits questions
-st.markdown("### RIASEC Traits")
-for trait, q_data in questions["RIASEC"].items():
-    st.markdown(f"**{trait}**")
-    selected_answer = st.radio(q_data["question"], options=[opt[0] for opt in q_data["options"]], key=f"RIASEC_{trait}")
-    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
-
 # start
 # Display OCEAN traits questions with larger question text and smaller trait label
 st.markdown("### OCEAN Traits")
