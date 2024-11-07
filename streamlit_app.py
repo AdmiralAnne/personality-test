@@ -22,30 +22,39 @@ vis = {
 
 df_sb = pd.DataFrame(vis)
 
+# Set sidebar width to occupy more space using Streamlit's config (put this at the top of your Streamlit script)
+st.set_page_config(layout="wide")
+
 # Sidebar Expander with Visualization
-st.info("Career Satisfaction Insights")
-st.write("This chart displays key factors influencing job satisfaction and awareness of career fit, "
+with st.sidebar.expander("Career Satisfaction Insights", expanded=False):
+    st.info("Key Insights on Career Satisfaction and Fit Awareness")
+    st.write("This chart displays key factors influencing job satisfaction and awareness of career fit, "
              "based on recent studies and surveys.")
 
-# Bar chart of survey data
-fig, ax = plt.subplots()
-ax.barh(df_sb['Metric'], df_sb['Percentage (%)'], color=['#4caf50', '#2196f3', '#ff9800', '#e91e63', '#9c27b0'])
-ax.set_xlabel('Percentage (%)')
-ax.set_title('Key Findings on Job Satisfaction and Career Fit Awareness')
-for i, (value, label) in enumerate(zip(df_sb['Percentage (%)'], df_sb['Metric'])):
-    ax.text(value + 1, i, f"{value}%", va='center')  # Add labels to each bar
+    # Bar chart of survey data
+    fig, ax = plt.subplots(figsize=(6, 4))
+    ax.barh(df_sb['Metric'], df_sb['Percentage (%)'], color=['#4caf50', '#2196f3', '#ff9800', '#e91e63', '#9c27b0'])
+    ax.set_xlabel('Percentage (%)')
+    ax.set_title('Key Findings on Job Satisfaction and Career Fit Awareness')
+    for i, (value, label) in enumerate(zip(df_sb['Percentage (%)'], df_sb['Metric'])):
+        ax.text(value + 1, i, f"{value}%", va='center')  # Add labels to each bar
 
-# Display the chart
-st.pyplot(fig)
+    # Display the chart
+    st.pyplot(fig)
 
-# Summary
-st.write("""
+    # Summary
+    st.write("""
         - **58%** prefer roles aligned with their strengths and interests.
         - **70%** emphasize the importance of meaningful work over higher income.
         - **36%** stay in roles that don’t align with personal values for security reasons.
         - **20%** show limited satisfaction increase with income beyond a certain point.
         - **36%** find their roles meaningful, suggesting a disconnect between roles and values.
     """)
+
+# Hide the main area to emphasize the sidebar (optional)
+st.write("## Main Content Hidden (Sidebar Full-Screen Mode)")
+st.write("Use the sidebar to explore career satisfaction insights.")
+
 
 
 # sidebar
