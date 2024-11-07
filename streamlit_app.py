@@ -269,7 +269,7 @@ else:
 #chart
 
 # Create an expander
-with st.expander("See the Chart"):
+with st.expander("Read more about Each Trait"):
     # Display the image inside the expander
     st.image("https://i.ibb.co/MkNmm31/chart1.jpg", caption="OCEAN Traits Image")
     st.image("https://i.ibb.co/SXxHm97/chart2.jpg", caption="RIASEC Traits Image")
