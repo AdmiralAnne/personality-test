@@ -289,11 +289,14 @@ if st.button("Get My Top 15 Jobs"):
             My RIASEC score is: {top_3_riasec_code}.
             My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
             Extraversion, Agreeableness, Neuroticism respectively). 40 being the max score.
+            
             Based on these traits, give me a list of the top 20 jobs that would be suitable for me.
-            Done make thes jobs too common or vague . . go into more niche categories and fetch interesting titles. 
-            Just write the jom titles, no description needed.
+            Don't make thes jobs too vague . . go into more niche categories and fetch interesting titles. 
+            Just write the job titles, no description needed.
 
-            also write a short summary talking about my prsonality and the general areas of work I fit in, such as catagory of career or fields i might be good at.
+            also write a very xrispt and short summary talking about my prsonality and the general areas of work I fit in, such as catagory of career or fields i might be good at.
+
+            tone: keep it super friendlt and chill, even add a bit on witty empathetic humour or punch lines.
             """
         with st.spinner('Fetching your top 20 jobs...'):
             ai_response = get_ai_response(generated_prompt_query)
