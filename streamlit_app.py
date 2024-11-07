@@ -236,6 +236,7 @@ if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
         ax1.plot(score, idx, 'o', color="skyblue", markersize=8)  # Plot score as a dot
         ax1.text(0, idx, extremes[trait][0], va='center', ha='right')  # Left label
         ax1.text(40, idx, extremes[trait][1], va='center', ha='left')  # Right label
+        ax1.text(score, idx + 0.1, str(score), color="black", ha='center')  # Score label above the dot
 
     # Customize OCEAN plot
     ax1.set_title("OCEAN Personality Traits")
@@ -251,15 +252,20 @@ if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
 
     # Plot RIASEC traits as a bar chart
     fig_riasec, ax2 = plt.subplots(figsize=(8, 5))
-    riasec_df.plot(kind='barh', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
+    bars = riasec_df.plot(kind='barh', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
     ax2.set_title("RIASEC Career Interest Scores")
     ax2.set_xlabel("Score")
     ax2.set_ylabel("Trait")
+
+    # Add score labels above each bar
+    for idx, score in enumerate(riasec_df['Score']):
+        ax2.text(score + 1, idx, str(score), color="black", va='center')  # Score label above each bar
 
     # Display the RIASEC plot
     st.pyplot(fig_riasec)
 else:
     st.warning("Please calculate your scores first by clicking the 'Calculate Scores' button.")
+
 
 
 # Button for job recommendations
