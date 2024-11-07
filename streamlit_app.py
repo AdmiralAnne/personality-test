@@ -3,8 +3,8 @@ from openai import OpenAI
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.header("Imagine yourself in these scenarios and answer 11 questions to find your -loosely ideal- career path: (beta version 0.2.0)")
-
+st.header("Psychometric Personality assessment and career matching.")
+st.write("Imagine yourself in these scenarios and answer 11 questions to find your -loosely ideal- career path: (beta version 0.2.0)")
 # instructions
 
 st.image("https://i.ibb.co/ckDPyRZ/instruct.png", caption="Easy Instructions")
