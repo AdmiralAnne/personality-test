@@ -394,9 +394,20 @@ with st.expander("Important Links"):
 # Section on Future Prospects
 st.info(
     """
-    ### Future Prospects for the Career Questionnaire Project
+    ### Future Prospects for the Project
     - **Enhanced Model Customization**: aim to refine the model, incorporating user feedback.
     - **More Curated Questions**: The questionnaire will be expanded with more nuanced questions.
     - **Guidance for Career Paths**: suggest additional resources to help users explore career paths that align with their interests.
+    """
+)
+
+st.info(
+    """
+    #### Special thanks to: 
+    - **Meet Dudhat - U21CS483 (Having fun at home in Gujarat)**
+    - **Jagadeesh - U21CS464 (Thin Guy, Likes Research and Coding )**
+    - **Dr P Vasuki ( Beloved Guide - Guiding Pillar of our project)**
+    - **Kameshwari Ma'am ( Best Mentor award )**
+    - *Marjiba - u21cs474 ( Creative Solutions and Designer )*
     """
 )
