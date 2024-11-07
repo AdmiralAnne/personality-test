@@ -4,254 +4,123 @@ from openai import OpenAI
 st.header("Answer these 11 questions to find your ideal career path: (beta version 0.2.0)")
 
 # questions.py
-question = {
+questions = {
     "OCEAN": {
-        "Openness": [
-            {
-                "question": "I enjoy trying out new activities or exploring unfamiliar ideas.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I am curious about many different topics.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ],
-        "Conscientiousness": [
-            {
-                "question": "I am highly organized and like to plan ahead.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I tend to complete my tasks before the deadline.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ],
-        "Extraversion": [
-            {
-                "question": "I feel energized when I am around other people.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I enjoy being the center of attention in social gatherings.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ],
-        "Agreeableness": [
-            {
-                "question": "I often consider others' feelings before acting.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I am willing to compromise to maintain peace.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ],
-        "Neuroticism": [
-            {
-                "question": "I often worry about situations, even if they are not urgent.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I frequently feel stressed in everyday life.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ]
+        "Openness": {
+            "question": "How do you feel about trying new experiences and ideas?",
+            "options": [
+                ("I am always excited to try new things and explore new ideas.", 35),
+                ("I usually enjoy new experiences, but I appreciate some familiar things too.", 30),
+                ("I am comfortable with new things, but I prefer a balance.", 22),
+                ("I like sticking to what I know best.", 12),
+                ("I am cautious and rarely seek new experiences.", 5)
+            ]
+        },
+        "Conscientiousness": {
+            "question": "How would you describe your approach to being organized and responsible?",
+            "options": [
+                ("I am very organized and always meet my responsibilities.", 35),
+                ("I am usually organized and try to stay on top of things.", 30),
+                ("I try to stay organized but sometimes struggle.", 22),
+                ("I am somewhat disorganized but manage to get by.", 12),
+                ("I prefer a relaxed approach and don’t stress much about organization.", 5)
+            ]
+        },
+        "Extraversion": {
+            "question": "How do you feel in social situations?",
+            "options": [
+                ("I love being around people and thrive in social settings.", 35),
+                ("I enjoy socializing but also appreciate some alone time.", 30),
+                ("I am comfortable in small groups but avoid large gatherings.", 22),
+                ("I prefer spending time alone or with just a few close friends.", 12),
+                ("I am very reserved and avoid social settings as much as possible.", 5)
+            ]
+        },
+        "Agreeableness": {
+            "question": "How would you describe your level of kindness and cooperation?",
+            "options": [
+                ("I am very empathetic and always aim for harmony.", 35),
+                ("I am usually kind and cooperative but set boundaries when needed.", 30),
+                ("I try to be agreeable, but I speak up when necessary.", 22),
+                ("I can be competitive and prioritize my own needs.", 12),
+                ("I am skeptical of others and tend to be assertive.", 5)
+            ]
+        },
+        "Neuroticism": {
+            "question": "How would you describe your emotional stability?",
+            "options": [
+                ("I am calm and rarely experience negative emotions.", 5),
+                ("I am generally stable but get stressed from time to time.", 12),
+                ("I have a good balance but experience occasional mood swings.", 22),
+                ("I feel anxious or worried somewhat often.", 30),
+                ("I often experience anxiety, stress, or worry.", 35)
+            ]
+        }
     },
     "RIASEC": {
-        "Realistic": [
-            {
-                "question": "I enjoy tasks that involve physical work or using tools.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I find satisfaction in building or fixing things.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ],
-        "Investigative": [
-            {
-                "question": "I like researching and analyzing complex problems.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I enjoy reading about scientific or technical topics.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ],
-        "Artistic": [
-            {
-                "question": "I feel fulfilled when engaging in creative activities like art or music.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I prefer work that allows for creative freedom.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ],
-        "Social": [
-            {
-                "question": "I enjoy helping others learn and grow.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I am happiest when I’m collaborating on group projects.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ],
-        "Enterprising": [
-            {
-                "question": "I am confident in leading teams and making decisions.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I like persuading people to consider new ideas or products.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ],
-        "Conventional": [
-            {
-                "question": "I prefer following structured routines and clear rules.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            },
-            {
-                "question": "I am skilled at managing records and keeping things organized.",
-                "options": [
-                    ("Strongly agree", 35),
-                    ("Agree", 30),
-                    ("Neutral", 22),
-                    ("Disagree", 12),
-                    ("Strongly disagree", 5)
-                ]
-            }
-        ]
+        "Realistic": {
+            "question": "Do you enjoy working with tools, equipment, or doing hands-on tasks?",
+            "options": [
+                ("I love working with my hands and using tools or equipment.", 35),
+                ("I enjoy hands-on tasks but like problem-solving too.", 30),
+                ("I don’t mind hands-on work occasionally.", 22),
+                ("I prefer tasks that don’t involve physical work.", 12),
+                ("I avoid hands-on or physical tasks when possible.", 5)
+            ]
+        },
+        "Investigative": {
+            "question": "Do you enjoy researching or analyzing information?",
+            "options": [
+                ("I am very interested in researching and exploring new ideas.", 35),
+                ("I like problem-solving and analyzing data.", 30),
+                ("I do some research, but I prefer more practical tasks.", 22),
+                ("I don’t mind occasional research tasks.", 12),
+                ("I avoid research or analysis if I can.", 5)
+            ]
+        },
+        "Artistic": {
+            "question": "Do you enjoy creative activities and artistic expression?",
+            "options": [
+                ("I am very creative and enjoy artistic activities.", 35),
+                ("I like being creative but need some structure.", 30),
+                ("I engage in creative activities from time to time.", 22),
+                ("I don’t have much interest in creative pursuits.", 12),
+                ("I avoid artistic or creative activities.", 5)
+            ]
+        },
+        "Social": {
+            "question": "Do you enjoy helping or teaching others?",
+            "options": [
+                ("I find great fulfillment in helping and teaching others.", 35),
+                ("I enjoy helping others when possible.", 30),
+                ("I sometimes help others, but it’s not a main focus for me.", 22),
+                ("I rarely help others unless necessary.", 12),
+                ("I prefer focusing on my own tasks and interests.", 5)
+            ]
+        },
+        "Enterprising": {
+            "question": "Do you like to lead or persuade others?",
+            "options": [
+                ("I love taking the lead and influencing people.", 35),
+                ("I enjoy leading but also value collaboration.", 30),
+                ("I like a mix of leading and following.", 22),
+                ("I’m not very interested in leadership roles.", 12),
+                ("I avoid taking charge and prefer staying in the background.", 5)
+            ]
+        },
+        "Conventional": {
+            "question": "How do you feel about organizing or managing details?",
+            "options": [
+                ("I am very organized and detail-oriented.", 35),
+                ("I like organizing but also appreciate flexibility.", 30),
+                ("I manage details but don’t prioritize it highly.", 22),
+                ("I prefer focusing on the big picture.", 12),
+                ("I avoid detail-oriented tasks whenever possible.", 5)
+            ]
+        }
     }
 }
+
 
 # Initialize OpenAI client
 client = OpenAI(base_url="https://helixmind.online/v1", api_key='helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM')
