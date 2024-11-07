@@ -23,7 +23,7 @@ vis = {
 df_sb = pd.DataFrame(vis)
 
 # Sidebar Expander with Visualization
-with st.sidebar.expander("Career Satisfaction Insights", expanded=False):
+with st.sidebar("Career Satisfaction Insights"):
     st.info("Key Insights on Career Satisfaction and Fit Awareness")
     st.write("This chart displays key factors influencing job satisfaction and awareness of career fit, "
              "based on recent studies and surveys.")
