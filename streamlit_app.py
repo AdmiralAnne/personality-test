@@ -23,23 +23,23 @@ vis = {
 df_sb = pd.DataFrame(vis)
 
 # Sidebar Expander with Visualization
-with st.sidebar.expander("Career Satisfaction Insights", expanded=False):
-    st.write("This chart displays key factors influencing job satisfaction and awareness of career fit, "
+Career Satisfaction Insights", expanded=False
+st.write("This chart displays key factors influencing job satisfaction and awareness of career fit, "
              "based on recent studies and surveys.")
 
-    # Bar chart of survey data
-    fig, ax = plt.subplots()
-    ax.barh(df_sb['Metric'], df_sb['Percentage (%)'], color=['#4caf50', '#2196f3', '#ff9800', '#e91e63', '#9c27b0'])
-    ax.set_xlabel('Percentage (%)')
-    ax.set_title('Key Findings on Job Satisfaction and Career Fit Awareness')
-    for i, (value, label) in enumerate(zip(df_sb['Percentage (%)'], df_sb['Metric'])):
-        ax.text(value + 1, i, f"{value}%", va='center')  # Add labels to each bar
+# Bar chart of survey data
+fig, ax = plt.subplots()
+ax.barh(df_sb['Metric'], df_sb['Percentage (%)'], color=['#4caf50', '#2196f3', '#ff9800', '#e91e63', '#9c27b0'])
+ax.set_xlabel('Percentage (%)')
+ax.set_title('Key Findings on Job Satisfaction and Career Fit Awareness')
+for i, (value, label) in enumerate(zip(df_sb['Percentage (%)'], df_sb['Metric'])):
+    ax.text(value + 1, i, f"{value}%", va='center')  # Add labels to each bar
 
-    # Display the chart
-    st.pyplot(fig)
+# Display the chart
+st.pyplot(fig)
 
-    # Summary
-    st.write("""
+# Summary
+st.write("""
         - **58%** prefer roles aligned with their strengths and interests.
         - **70%** emphasize the importance of meaningful work over higher income.
         - **36%** stay in roles that don’t align with personal values for security reasons.
