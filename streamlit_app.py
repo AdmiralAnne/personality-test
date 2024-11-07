@@ -390,6 +390,7 @@ with st.expander("Important Links"):
     st.write("[Source Code - Github for this website](https://github.com/AdmiralAnne/personality-test)")
     st.write("[Questionnaire Sources](https://docs.google.com/spreadsheets/d/1qUE0sGZfC5jxx-gi-HfJR0wmeRWJUZS6HexJvWu9agE/edit?usp=sharing)")
     st.write("[Dataset Sources](https://docs.google.com/spreadsheets/d/1wBFU0WdFfEDZGT21f3agZtHEyVInEMC_4maf3zkMsTA/edit?gid=0#gid=0)")
+    st.write("[Link to System Architecture / Diagrams](https://excalidraw.com/#json=JCYgsb4EfJPD-aYiywoFR,EIlEyOdZ4OyAN8drdiOEWg)")
     st.write("[Google Colab Notebook](https://colab.research.google.com/drive/1n_qZKStxZpfBBr0pLDm40sLjZ-ifgur2?usp=sharing)")
 
 # Section on Future Prospects
@@ -401,6 +402,9 @@ with st.expander("Future Prospects for the Project"):
         - **Guidance for Career Paths**: suggest additional resources to help users explore career paths that align with their interests.
         """
     )
+
+with st.expander("Future Prospects for the Project"):
+    st.image("https://i.ibb.co/vmK5tyH/diagram.png", caption="System Architecture")
 
 st.info(
     """
