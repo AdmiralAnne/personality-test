@@ -288,6 +288,9 @@ selected_domains = st.multiselect(
     label_visibility="visible"
 )
 
+# Join selected domains into a string
+domain_str = ", ".join(selected_domains) if selected_domains else "None"
+
 # input end
 
 # Button to calculate scores
