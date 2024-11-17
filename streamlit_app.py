@@ -393,7 +393,7 @@ if st.button("Get My Top 15 Jobs"):
 
             Organize the jobs neatly acording to domain if provided.
 
-            also write a very crispt and short "40 words" summary talking about my prsonality and the general areas of work I fit in, such as catagory of career or fields i might be good at.
+            also write a very crispt and short "30 words" summary talking about: The Industries I might be good at in. Keep it in points only.
             tone: keep it super friendlt and chill.
             """
         with st.spinner('Fetching your top 20 jobs...'):
