@@ -277,8 +277,16 @@ for trait, q_data in questions["RIASEC"].items():
     selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
 #end
 
-# input start
-domain_str=st.text_input("enter Your Domain or Area of Interest.", value="type here", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, placeholder=None, disabled=False, label_visibility="visible")
+# input start 
+
+domains = ["Technology", "Art", "Science", "Education", "Business", "Health", "Sports", "Other"]
+selected_domains = st.multiselect(
+    label="Select Your Domains or Areas of Interest:",
+    options=domains,
+    default=None,
+    help="You can select multiple domains or areas of interest.",
+    label_visibility="visible"
+)
 
 # input end
 
