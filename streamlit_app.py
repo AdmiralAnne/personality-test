@@ -28,10 +28,6 @@ df_sb = pd.DataFrame(vis)
 
 # Sidebar
 
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-
 # Data for visualization
 vis = {
     "Metric": [
