@@ -396,7 +396,7 @@ if st.button("Get My Top 20 Jobs"):
 
             Based on these traits, suggest the top 20 job titles for me, focusing on niche roles (no descriptions). Organize by domain if provided; if 'other' is selected, give general recommendations.
             Provided domain: {domain_str}
-            Also, provide a brief 30-word summary on industries I might excel in. Keep it friendly and chill.
+            Only respond with the job tiles, properly numbered and organized. No filler texts in the begining or the end
         """
         
         with st.spinner('Fetching your top 20 jobs...'):
@@ -419,13 +419,13 @@ if 'job_recommendations' in st.session_state:
     st.write("### Job Recommendations Based on Your Scores:")
     st.write(st.session_state.job_recommendations)
 
-if 'generated_prompt_query' in st.session_state:
-    st.write("### Generated Query Used:")
-    st.write(st.session_state.generated_prompt_query)
+# if 'generated_prompt_query' in st.session_state:
+    # st.write("### Generated Query Used:")
+    # st.write(st.session_state.generated_prompt_query)
 
-if 'domain_str' in st.session_state:
-    st.write("### Provided Domain:")
-    st.write(st.session_state.domain_str)
+# if 'domain_str' in st.session_state:
+    # st.write("### Provided Domain:")
+    # st.write(st.session_state.domain_str)
 
 
 st.divider()
