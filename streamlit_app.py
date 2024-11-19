@@ -2,6 +2,7 @@ import streamlit as st
 import openai
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 st.header("Psychometric Personality assessment and career matching.")
 st.write("Imagine yourself in these scenarios and answer 11 questions to find your -loosely ideal- career path: (beta version 0.2.0)")
@@ -186,8 +187,8 @@ questions = {
 # end of questions
 
 # Initialize OpenAI client
-api_key = os.getenv("OPENAI_API_KEY")  # Store your key in an environment variable for security
-client = OpenAI(base_url="https://helixmind.online/v1", api_key='helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM')
+api_key = os.getenv("helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM")  # Store your key in an environment variable for security
+client = OpenAI(base_url="https://helixmind.online/v1", api_key='api_key')
 
 # Create a session state variable to store chat history
 if 'messages' not in st.session_state:
