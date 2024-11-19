@@ -1,5 +1,5 @@
 import streamlit as st
-from openai import OpenAI
+import openai
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -11,22 +11,6 @@ st.image("https://i.ibb.co/ckDPyRZ/instruct.png", caption="Easy Instructions")
 
 
 # sidebar
-
-# Data for visualization
-vis = {
-    "Metric": [
-        "Prefer jobs aligned with interests",
-        "Report meaningful work as essential",
-        "Remain in jobs that don't fit due to security",
-        "Satisfaction influenced by income beyond threshold",
-        "Find their jobs meaningful overall"
-    ],
-    "Percentage (%)": [58, 70, 36, 20, 36]
-}
-
-df_sb = pd.DataFrame(vis)
-
-# Sidebar
 
 # Data for visualization
 vis = {
