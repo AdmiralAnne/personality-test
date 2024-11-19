@@ -369,54 +369,6 @@ domain_str = ", ".join(selected_domains) if selected_domains else "None"
 
 # input end
 
-# Calculate Scores Button
-if st.button("Calculate Scores"):
-    ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
-    st.session_state['ocean_scores'] = ocean_scores
-    st.session_state['riasec_scores'] = riasec_scores
-    st.session_state['top_3_riasec_code'] = top_3_riasec_code
-
-    st.subheader("Top-3 RIASEC Code:")
-    st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
-
-# Plot Scores
-if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
-    # OCEAN Plot
-    fig_ocean, ax1 = plt.subplots(figsize=(8, 5))
-    extremes = {
-        "Openness": ("Closed", "Open"),
-        "Conscientiousness": ("Carefree", "Conscientious"),
-        "Extraversion": ("Introvert", "Extrovert"),
-        "Agreeableness": ("Assertive", "Agreeable"),
-        "Neuroticism": ("Calm", "Anxious")
-    }
-    for idx, (trait, score) in enumerate(st.session_state['ocean_scores'].items()):
-        ax1.plot([0, 40], [idx, idx], 'k-', lw=1)
-        ax1.plot(score, idx, 'o', color="skyblue", markersize=8)
-        ax1.text(0, idx, extremes[trait][0], va='center', ha='right')
-        ax1.text(40, idx, extremes[trait][1], va='center', ha='left')
-        ax1.text(score, idx + 0.1, str(score), color="black", ha='center')
-    ax1.set_title("OCEAN Personality Traits")
-    ax1.set_yticks(range(len(st.session_state['ocean_scores'])))
-    ax1.set_yticklabels(list(st.session_state['ocean_scores'].keys()))
-    ax1.invert_yaxis()
-    st.pyplot(fig_ocean)
-
-    # RIASEC Plot
-    fig_riasec, ax2 = plt.subplots(figsize=(8, 5))
-    riasec_df = pd.DataFrame(list(st.session_state['riasec_scores'].items()), columns=['Trait', 'Score'])
-    bars = riasec_df.plot(kind='barh', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
-    ax2.set_title("RIASEC Career Interest Scores")
-    ax2.set_xlabel("Score")
-    ax2.set_ylabel("Trait")
-    for idx, score in enumerate(riasec_df['Score']):
-        ax2.text(score + 1, idx, str(score), color="black", va='center')
-    st.pyplot(fig_riasec)
-else:
-    st.warning("Please calculate your scores first.")
-
-#chart
-
 # Create an expander
 with st.expander("Read more about Each Trait"):
     # Display the image inside the expander
