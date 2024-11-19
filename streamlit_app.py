@@ -226,11 +226,9 @@ def calculate_scores(selected_answers):
 
     # Iterate through selected answers to calculate scores
     for trait, questions in selected_answers.items():
-        # Check if the trait belongs to OCEAN
         if trait in ocean_scores:
             for _, score in questions.items():
                 ocean_scores[trait] += score
-        # Check if the trait belongs to RIASEC
         elif trait in riasec_scores:
             for _, score in questions.items():
                 riasec_scores[trait] += score
@@ -241,100 +239,84 @@ def calculate_scores(selected_answers):
 
     return ocean_scores, riasec_scores, top_3_riasec_code
 
-# Store user's answers in a dictionary
-selected_answers = {}
+# Placeholder for selected answers
+selected_answers = {
+    "OCEAN": {
+        "Openness": {},
+        "Conscientiousness": {},
+        "Extraversion": {},
+        "Agreeableness": {},
+        "Neuroticism": {}
+    },
+    "RIASEC": {
+        "Realistic": {},
+        "Investigative": {},
+        "Artistic": {},
+        "Social": {},
+        "Enterprising": {},
+        "Conventional": {}
+    }
+}
 
-# start
-# Display OCEAN traits questions with larger question text and smaller trait label
+# Display OCEAN traits questions
 st.markdown("### OCEAN Traits")
-
-for trait, q_data in questions["OCEAN"].items():
-    # Display trait with a smaller font size
+for trait, questions in selected_answers["OCEAN"].items():
     st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
-    
-    for sub_question, question_data in q_data.items():
-        if "question" in question_data and "options" in question_data:
-            # Display question with a larger font size
-            st.markdown(f"<p style='font-size:24px;'>{question_data['question']}</p>", unsafe_allow_html=True)
-            
-            # Display answer options
-            selected_answer = st.radio(
-                "", 
-                options=[opt[0] for opt in question_data["options"]],
-                key=f"{trait}_{sub_question}"
-            )
-            st.divider()
-            
-            # Store the score for the selected option
-            selected_answers[f"{trait}_{sub_question}"] = next(
-                score for opt, score in question_data["options"] if opt == selected_answer
-            )
-        else:
-            st.error(f"Invalid question structure for {trait} - {sub_question}")
+    for sub_question in range(1, 4):  # Example: 3 questions per trait
+        question_text = f"{trait} Question {sub_question}?"
+        st.markdown(f"<p style='font-size:24px;'>{question_text}</p>", unsafe_allow_html=True)
+        selected_answer = st.radio(
+            "",
+            options=["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+            key=f"{trait}_q{sub_question}"
+        )
+        selected_answers["OCEAN"][trait][f"q{sub_question}"] = selected_answer
 
-# Repeat for RIASEC Traits
+# Display RIASEC traits questions
 st.markdown("### RIASEC Traits")
-
-for trait, q_data in questions["RIASEC"].items():
+for trait, questions in selected_answers["RIASEC"].items():
     st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
-    
-    for sub_question, question_data in q_data.items():
-        if "question" in question_data and "options" in question_data:
-            st.markdown(f"<p style='font-size:24px;'>{question_data['question']}</p>", unsafe_allow_html=True)
-            
-            selected_answer = st.radio(
-                "", 
-                options=[opt[0] for opt in question_data["options"]],
-                key=f"RIASEC_{trait}_{sub_question}"
-            )
-            st.divider()
-            
-            selected_answers[f"RIASEC_{trait}_{sub_question}"] = next(
-                score for opt, score in question_data["options"] if opt == selected_answer
-            )
-        else:
-            st.error(f"Invalid question structure for {trait} - {sub_question}")
+    for sub_question in range(1, 4):  # Example: 3 questions per trait
+        question_text = f"{trait} Question {sub_question}?"
+        st.markdown(f"<p style='font-size:24px;'>{question_text}</p>", unsafe_allow_html=True)
+        selected_answer = st.radio(
+            "",
+            options=["Not at all", "Somewhat", "Moderately", "Very", "Extremely"],
+            key=f"RIASEC_{trait}_q{sub_question}"
+        )
+        selected_answers["RIASEC"][trait][f"q{sub_question}"] = selected_answer
 
 # Debug output
 st.write("Selected Answers:", selected_answers)
 
 #end
 
-# input start 
-
+# Input domains
 domains = ["Technology", "Art", "Science", "Education", "Business", "Health", "Sports", "Other"]
 selected_domains = st.multiselect(
     label="Select Your Domains or Areas of Interest:",
     options=domains,
-    default=None,
     help="You can select multiple domains or areas of interest.",
-    label_visibility="visible"
 )
-
 # Join selected domains into a string
 domain_str = ", ".join(selected_domains) if selected_domains else "None"
 
 # input end
 
-# Button to calculate scores
+# Calculate Scores Button
 if st.button("Calculate Scores"):
-    # Calculate OCEAN and RIASEC scores based on selected answers
     ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
     st.session_state['ocean_scores'] = ocean_scores
     st.session_state['riasec_scores'] = riasec_scores
     st.session_state['top_3_riasec_code'] = top_3_riasec_code
 
-    # Display the top-3 RIASEC code
     st.subheader("Top-3 RIASEC Code:")
     st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
 
-# Check if scores are available before plotting
+# Plot Scores
 if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
-    # Convert scores into DataFrames for easier visualization
-    ocean_df = pd.DataFrame(list(st.session_state['ocean_scores'].items()), columns=['Trait', 'Score'])
-    riasec_df = pd.DataFrame(list(st.session_state['riasec_scores'].items()), columns=['Trait', 'Score'])
-    
-    # Define labels for the OCEAN plot extremes
+    # OCEAN Plot
+    fig_ocean, ax1 = plt.subplots(figsize=(8, 5))
     extremes = {
         "Openness": ("Closed", "Open"),
         "Conscientiousness": ("Carefree", "Conscientious"),
@@ -342,43 +324,30 @@ if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
         "Agreeableness": ("Assertive", "Agreeable"),
         "Neuroticism": ("Calm", "Anxious")
     }
-    
-    # Plot OCEAN traits
-    fig_ocean, ax1 = plt.subplots(figsize=(8, 5))
     for idx, (trait, score) in enumerate(st.session_state['ocean_scores'].items()):
-        ax1.plot([0, 40], [idx, idx], 'k-', lw=1)  # Horizontal line from 0 to 20
-        ax1.plot(score, idx, 'o', color="skyblue", markersize=8)  # Plot score as a dot
-        ax1.text(0, idx, extremes[trait][0], va='center', ha='right')  # Left label
-        ax1.text(20, idx, extremes[trait][1], va='center', ha='left')  # Right label
-        ax1.text(score, idx + 0.1, str(score), color="black", ha='center')  # Score label above the dot
-
-    # Customize OCEAN plot
+        ax1.plot([0, 40], [idx, idx], 'k-', lw=1)
+        ax1.plot(score, idx, 'o', color="skyblue", markersize=8)
+        ax1.text(0, idx, extremes[trait][0], va='center', ha='right')
+        ax1.text(40, idx, extremes[trait][1], va='center', ha='left')
+        ax1.text(score, idx + 0.1, str(score), color="black", ha='center')
     ax1.set_title("OCEAN Personality Traits")
     ax1.set_yticks(range(len(st.session_state['ocean_scores'])))
     ax1.set_yticklabels(list(st.session_state['ocean_scores'].keys()))
-    ax1.set_xlim(-2, 22)
-    ax1.set_xticks([])  # Remove x-axis ticks for cleanliness
-    ax1.invert_yaxis()  # Invert y-axis to match question order
-    ax1.grid(False)  # Remove grid for a cleaner look
-
-    # Display the OCEAN plot
+    ax1.invert_yaxis()
     st.pyplot(fig_ocean)
 
-    # Plot RIASEC traits as a bar chart
+    # RIASEC Plot
     fig_riasec, ax2 = plt.subplots(figsize=(8, 5))
+    riasec_df = pd.DataFrame(list(st.session_state['riasec_scores'].items()), columns=['Trait', 'Score'])
     bars = riasec_df.plot(kind='barh', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
     ax2.set_title("RIASEC Career Interest Scores")
     ax2.set_xlabel("Score")
     ax2.set_ylabel("Trait")
-
-    # Add score labels above each bar
     for idx, score in enumerate(riasec_df['Score']):
-        ax2.text(score + 1, idx, str(score), color="black", va='center')  # Score label above each bar
-
-    # Display the RIASEC plot
+        ax2.text(score + 1, idx, str(score), color="black", va='center')
     st.pyplot(fig_riasec)
 else:
-    st.warning("Please calculate your scores first by clicking the 'Calculate Scores' button.")
+    st.warning("Please calculate your scores first.")
 
 #chart
 
