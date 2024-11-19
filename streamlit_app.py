@@ -332,7 +332,7 @@ selected_domains = st.multiselect(
 domain_str = ", ".join(selected_domains) if selected_domains else "None"
 
 # Calculate Scores Button
-if st.button("Calculate Scores"):
+if st.button("Calculate Scores", key="calculate_scores_button"):
     ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
     st.session_state['ocean_scores'] = ocean_scores
     st.session_state['riasec_scores'] = riasec_scores
@@ -340,6 +340,7 @@ if st.button("Calculate Scores"):
 
     st.subheader("Top-3 RIASEC Code:")
     st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
+    pass
 
 # Plot Scores
 if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
