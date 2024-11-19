@@ -459,11 +459,13 @@ st.divider()
 st.info(
     """
     #### Special thanks to: 
-    - **MEET DUDHAT - U21CS483 ( Lead developer, Having fun at home in Gujarat)**
-    - **JAGADEESH - U21CS464 ( Thin Guy, Likes Research and Coding )**
-    - **Dr P VASUKI ( Beloved Guide - Guiding Pillar of our project)**
-    - **KAMESHWARI Ma'am ( Best Mentor award )**
-    - **MARJIBA - U21CS474 ( Creative Solutions and Designer )**
+    - **MEET DUDHAT - U21CS483
+    - **JAGADEESH - U21CS464
+    
+    - **Dr P VASUKI
+    - **KAMESHWARI Ma'am
+    
+    - **MARJIBA - U21CS474
     """
 )
 
