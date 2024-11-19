@@ -266,10 +266,23 @@ for trait in selected_answers["RIASEC"]:
 ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
 
 # Display scores for debugging
-st.write("OCEAN Scores:", ocean_scores)
-st.write("RIASEC Scores:", riasec_scores)
-st.write("Top 3 RIASEC Code:", top_3_riasec_code)
+# st.write("OCEAN Scores:", ocean_scores)
+# st.write("RIASEC Scores:", riasec_scores)
+# st.write("Top 3 RIASEC Code:", top_3_riasec_code)
 
+# Input domains
+domains = ["Technology", "Art", "Science", "Education", "Business", "Health", "Sports", "Other"]
+selected_domains = st.multiselect(
+    label="Select Your Domains or Areas of Interest:",
+    options=domains,
+    help="You can select multiple domains or areas of interest.",
+)
+
+# Join selected domains into a string
+domain_str = ", ".join(selected_domains) if selected_domains else "None"
+
+# Display selected domains
+st.write(f"### Selected Domains of Interest: {domain_str}")
 
 # Add a button to calculate and display results
 if st.button('Calculate and Show Results'):
@@ -279,7 +292,7 @@ if st.button('Calculate and Show Results'):
     # Display the top 3 RIASEC codes
     st.write(f"Top 3 RIASEC Codes: {top_3_riasec_code}")
 
-    # Plot the OCEAN scores
+# Plot the OCEAN scores
 st.write("### OCEAN Scores")
 fig_ocean, ax_ocean = plt.subplots(figsize=(8, 5))
 ocean_labels = list(ocean_scores.keys())
