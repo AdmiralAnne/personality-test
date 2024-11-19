@@ -374,7 +374,7 @@ if st.button("Get My Top 15 Jobs"):
             My OCEAN scores are: {formatted_ocean_values_str} (Max score 40).
 
             Based on these traits, suggest the top 20 job titles for me, focusing on niche roles (no descriptions). Organize by domain if provided; if 'other' is selected, give general recommendations.
-
+            procided domain: {domain_str}
             Also, provide a brief 30-word summary on industries I might excel in. Keep it friendly and chill.
             """
         
