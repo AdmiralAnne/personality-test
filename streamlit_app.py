@@ -259,6 +259,7 @@ for trait in selected_answers["OCEAN"]:
     st.markdown(f"#### {trait}")
     for q in range(1, 4):  # Assuming 3 questions per trait
         question_text = f"How strongly do you agree with the following statement regarding {trait}?"
+        # Add the trait and question number to the key to make it unique
         answer = st.radio(question_text, ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"], key=f"{trait}_q{q}")
         selected_answers["OCEAN"][trait][f"q{q}"] = answer
 
@@ -268,9 +269,9 @@ for trait in selected_answers["RIASEC"]:
     st.markdown(f"#### {trait}")
     for q in range(1, 4):  # Assuming 3 questions per trait
         question_text = f"How much do you enjoy {trait} activities?"
+        # Add the trait and question number to the key to make it unique
         answer = st.radio(question_text, ["Not at all", "Somewhat", "Moderately", "Very", "Extremely"], key=f"RIASEC_{trait}_q{q}")
         selected_answers["RIASEC"][trait][f"q{q}"] = answer
-
 # Input domains
 domains = ["Technology", "Art", "Science", "Education", "Business", "Health", "Sports", "Other"]
 selected_domains = st.multiselect("Select Your Domains or Areas of Interest:", domains)
