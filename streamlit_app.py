@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import os
 
 st.header("Psychoanalytic Personality assessment and career matching.")
-st.write("Imagine yourself in these scenarios and answer 22 questions to find your -loosely ideal- career path: (beta version 0.2.0)")
+st.write("Imagine yourself in these scenarios and answer 22 questions to find your -loosely ideal- career path: (beta version 0.9.0)")
 # instructions
 
 st.image("https://i.ibb.co/ckDPyRZ/instruct.png", caption="Easy Instructions")
