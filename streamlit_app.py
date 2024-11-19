@@ -247,7 +247,6 @@ selected_answers = {}
 # start
 # Display OCEAN traits questions with larger question text and smaller trait label
 st.markdown("### OCEAN Traits")
-selected_answers = {}
 
 for trait, q_data in questions["OCEAN"].items():
     # Display trait with a smaller font size
