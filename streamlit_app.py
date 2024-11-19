@@ -269,3 +269,36 @@ ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answe
 st.write("OCEAN Scores:", ocean_scores)
 st.write("RIASEC Scores:", riasec_scores)
 st.write("Top 3 RIASEC Code:", top_3_riasec_code)
+
+
+# Add a button to calculate and display results
+if st.button('Calculate and Show Results'):
+    # Calculate scores based on user input
+    ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
+
+    # Display the top 3 RIASEC codes
+    st.write(f"Top 3 RIASEC Codes: {top_3_riasec_code}")
+
+    # Plot the OCEAN scores
+    st.write("### OCEAN Scores")
+    fig_ocean, ax_ocean = plt.subplots()
+    ocean_labels = list(ocean_scores.keys())
+    ocean_values = list(ocean_scores.values())
+    ax_ocean.bar(ocean_labels, ocean_values, color='skyblue')
+    ax_ocean.set_ylim(0, 40)  # Maximum score of 40
+    ax_ocean.set_title("OCEAN Scores")
+    ax_ocean.set_ylabel("Score")
+    ax_ocean.set_xlabel("Trait")
+    st.pyplot(fig_ocean)
+
+    # Plot the RIASEC scores
+    st.write("### RIASEC Scores")
+    fig_riasec, ax_riasec = plt.subplots()
+    riasec_labels = list(riasec_scores.keys())
+    riasec_values = list(riasec_scores.values())
+    ax_riasec.bar(riasec_labels, riasec_values, color='lightgreen')
+    ax_riasec.set_ylim(0, 40)  # Maximum score of 40
+    ax_riasec.set_title("RIASEC Scores")
+    ax_riasec.set_ylabel("Score")
+    ax_riasec.set_xlabel("Trait")
+    st.pyplot(fig_riasec)
