@@ -280,25 +280,55 @@ if st.button('Calculate and Show Results'):
     st.write(f"Top 3 RIASEC Codes: {top_3_riasec_code}")
 
     # Plot the OCEAN scores
-    st.write("### OCEAN Scores")
-    fig_ocean, ax_ocean = plt.subplots()
-    ocean_labels = list(ocean_scores.keys())
-    ocean_values = list(ocean_scores.values())
-    ax_ocean.bar(ocean_labels, ocean_values, color='skyblue')
-    ax_ocean.set_ylim(0, 40)  # Maximum score of 40
-    ax_ocean.set_title("OCEAN Scores")
-    ax_ocean.set_ylabel("Score")
-    ax_ocean.set_xlabel("Trait")
-    st.pyplot(fig_ocean)
+st.write("### OCEAN Scores")
+fig_ocean, ax_ocean = plt.subplots(figsize=(8, 5))
+ocean_labels = list(ocean_scores.keys())
+ocean_values = list(ocean_scores.values())
 
-    # Plot the RIASEC scores
-    st.write("### RIASEC Scores")
-    fig_riasec, ax_riasec = plt.subplots()
-    riasec_labels = list(riasec_scores.keys())
-    riasec_values = list(riasec_scores.values())
-    ax_riasec.bar(riasec_labels, riasec_values, color='lightgreen')
-    ax_riasec.set_ylim(0, 40)  # Maximum score of 40
-    ax_riasec.set_title("RIASEC Scores")
-    ax_riasec.set_ylabel("Score")
-    ax_riasec.set_xlabel("Trait")
-    st.pyplot(fig_riasec)
+# Bar chart for OCEAN scores
+bars_ocean = ax_ocean.bar(ocean_labels, ocean_values, color='skyblue')
+
+# Add labels on top of each bar for OCEAN scores
+for bar in bars_ocean:
+    yval = bar.get_height()
+    ax_ocean.text(bar.get_x() + bar.get_width() / 2, yval + 1, round(yval, 1), ha='center', va='bottom', fontsize=10)
+
+# Set axis limits and labels for OCEAN chart
+ax_ocean.set_ylim(0, 40)  # Maximum score of 40
+ax_ocean.set_title("OCEAN Scores", fontsize=14, fontweight='bold')
+ax_ocean.set_xlabel("Trait", fontsize=12)
+ax_ocean.set_ylabel("Score", fontsize=12)
+ax_ocean.tick_params(axis='x', rotation=45)
+
+# Styling the grid for OCEAN chart
+ax_ocean.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Show OCEAN plot
+st.pyplot(fig_ocean)
+
+# Plot the RIASEC scores
+st.write("### RIASEC Scores")
+fig_riasec, ax_riasec = plt.subplots(figsize=(8, 5))
+riasec_labels = list(riasec_scores.keys())
+riasec_values = list(riasec_scores.values())
+
+# Bar chart for RIASEC scores
+bars_riasec = ax_riasec.bar(riasec_labels, riasec_values, color='lightgreen')
+
+# Add labels on top of each bar for RIASEC scores
+for bar in bars_riasec:
+    yval = bar.get_height()
+    ax_riasec.text(bar.get_x() + bar.get_width() / 2, yval + 1, round(yval, 1), ha='center', va='bottom', fontsize=10)
+
+# Set axis limits and labels for RIASEC chart
+ax_riasec.set_ylim(0, 40)  # Maximum score of 40
+ax_riasec.set_title("RIASEC Scores", fontsize=14, fontweight='bold')
+ax_riasec.set_xlabel("Trait", fontsize=12)
+ax_riasec.set_ylabel("Score", fontsize=12)
+ax_riasec.tick_params(axis='x', rotation=45)
+
+# Styling the grid for RIASEC chart
+ax_riasec.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Show RIASEC plot
+st.pyplot(fig_riasec)
