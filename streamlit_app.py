@@ -299,10 +299,15 @@ if st.button('Calculate and Show Results'):
     # Calculate scores based on user input
     ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
 
+    # Store the scores in session state
+    st.session_state.ocean_scores = ocean_scores
+    st.session_state.riasec_scores = riasec_scores
+    st.session_state.top_3_riasec_code = top_3_riasec_code
+
     # Display the top 3 RIASEC codes
     st.write(f"Top 3 RIASEC Codes: {top_3_riasec_code}")
-    # Plot the OCEAN scores
-    st.write("### OCEAN Scores")
+    
+    # Create OCEAN graph and save to session state
     fig_ocean, ax_ocean = plt.subplots(figsize=(8, 5))
     ocean_labels = list(ocean_scores.keys())
     ocean_values = list(ocean_scores.values())
@@ -325,11 +330,10 @@ if st.button('Calculate and Show Results'):
     # Styling the grid for OCEAN chart
     ax_ocean.grid(axis='y', linestyle='--', alpha=0.7)
 
-    # Show OCEAN plot
-    st.pyplot(fig_ocean)
+    # Save the OCEAN plot to session state
+    st.session_state.fig_ocean = fig_ocean
 
-    # Plot the RIASEC scores
-    st.write("### RIASEC Scores")
+    # Create RIASEC graph and save to session state
     fig_riasec, ax_riasec = plt.subplots(figsize=(8, 5))
     riasec_labels = list(riasec_scores.keys())
     riasec_values = list(riasec_scores.values())
@@ -352,12 +356,29 @@ if st.button('Calculate and Show Results'):
     # Styling the grid for RIASEC chart
     ax_riasec.grid(axis='y', linestyle='--', alpha=0.7)
 
-    # Show RIASEC plot
-    st.pyplot(fig_riasec)
+    # Save the RIASEC plot to session state
+    st.session_state.fig_riasec = fig_riasec
 
-    # session state
-    st.session_state.ocean_scores = ocean_scores
-    st.session_state.top_3_riasec_code = top_3_riasec_code
+# Display the stored graphs and scores if they are in session state
+if 'fig_ocean' in st.session_state:
+    st.write("### OCEAN Scores")
+    st.pyplot(st.session_state.fig_ocean)
+
+if 'fig_riasec' in st.session_state:
+    st.write("### RIASEC Scores")
+    st.pyplot(st.session_state.fig_riasec)
+
+if 'ocean_scores' in st.session_state:
+    st.write("### OCEAN Scores (Data)")
+    st.write(st.session_state.ocean_scores)
+
+if 'riasec_scores' in st.session_state:
+    st.write("### RIASEC Scores (Data)")
+    st.write(st.session_state.riasec_scores)
+    
+# session state
+st.session_state.ocean_scores = ocean_scores
+st.session_state.top_3_riasec_code = top_3_riasec_code
 
 # Button for job recommendations
 if st.button("Get My Top 15 Jobs"):
