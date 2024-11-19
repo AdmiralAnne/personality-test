@@ -355,6 +355,9 @@ if st.button('Calculate and Show Results'):
     # Show RIASEC plot
     st.pyplot(fig_riasec)
 
+    # session state
+    st.session_state.ocean_scores = ocean_scores
+    st.session_state.top_3_riasec_code = top_3_riasec_code
 
 # Button for job recommendations
 if st.button("Get My Top 15 Jobs"):
@@ -370,14 +373,13 @@ if st.button("Get My Top 15 Jobs"):
             My RIASEC score is: {top_3_riasec_code}.
             My OCEAN scores are: {formatted_ocean_values_str} (Max score 40).
 
-        Based on these traits, suggest the top 20 job titles for me, focusing on niche roles (no descriptions). Organize by domain if provided; if 'other' is selected, give general recommendations.
+            Based on these traits, suggest the top 20 job titles for me, focusing on niche roles (no descriptions). Organize by domain if provided; if 'other' is selected, give general recommendations.
 
-        Also, provide a brief 30-word summary on industries I might excel in. Keep it friendly and chill.
-        """
+            Also, provide a brief 30-word summary on industries I might excel in. Keep it friendly and chill.
+            """
         
         with st.spinner('Fetching your top 15 jobs...'):
             ai_response = get_ai_response(generated_prompt_query)
-            
             # Displaying the response in a neat way
             st.subheader("Your personality fits the following possible occupations....")
             st.write(ai_response)
