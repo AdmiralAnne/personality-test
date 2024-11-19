@@ -327,49 +327,56 @@ selected_answers = {}
 # start
 # Display OCEAN traits questions with larger question text and smaller trait label
 st.markdown("### OCEAN Traits")
+selected_answers = {}
 
 for trait, q_data in questions["OCEAN"].items():
     # Display trait with a smaller font size
     st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
     
-    for sub_question, options_key in q_data.items():
-        # Display question with a larger font size
-        st.markdown(f"<p style='font-size:24px;'>{options_key['question']}</p>", unsafe_allow_html=True)
-        
-        # Display answer options
-        selected_answer = st.radio(
-            "", 
-            options=[opt[0] for opt in options_key['options']],
-            key=f"{trait}_{sub_question}"
-        )
-        st.divider()
-        
-        # Store the score for the selected option
-        selected_answers[f"{trait}_{sub_question}"] = next(score for opt, score in options_key['options'] if opt == selected_answer)
+    for sub_question, question_data in q_data.items():
+        if "question" in question_data and "options" in question_data:
+            # Display question with a larger font size
+            st.markdown(f"<p style='font-size:24px;'>{question_data['question']}</p>", unsafe_allow_html=True)
+            
+            # Display answer options
+            selected_answer = st.radio(
+                "", 
+                options=[opt[0] for opt in question_data["options"]],
+                key=f"{trait}_{sub_question}"
+            )
+            st.divider()
+            
+            # Store the score for the selected option
+            selected_answers[f"{trait}_{sub_question}"] = next(
+                score for opt, score in question_data["options"] if opt == selected_answer
+            )
+        else:
+            st.error(f"Invalid question structure for {trait} - {sub_question}")
 
-# Display RIASEC traits questions with similar styling
+# Repeat for RIASEC Traits
 st.markdown("### RIASEC Traits")
 
 for trait, q_data in questions["RIASEC"].items():
-    # Display trait with a smaller font size
     st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
     
-    for sub_question, options_key in q_data.items():
-        # Display question with a larger font size
-        st.markdown(f"<p style='font-size:24px;'>{options_key['question']}</p>", unsafe_allow_html=True)
-        
-        # Display answer options
-        selected_answer = st.radio(
-            "", 
-            options=[opt[0] for opt in options_key['options']],
-            key=f"RIASEC_{trait}_{sub_question}"
-        )
-        st.divider()
-        
-        # Store the score for the selected option
-        selected_answers[f"RIASEC_{trait}_{sub_question}"] = next(score for opt, score in options_key['options'] if opt == selected_answer)
+    for sub_question, question_data in q_data.items():
+        if "question" in question_data and "options" in question_data:
+            st.markdown(f"<p style='font-size:24px;'>{question_data['question']}</p>", unsafe_allow_html=True)
+            
+            selected_answer = st.radio(
+                "", 
+                options=[opt[0] for opt in question_data["options"]],
+                key=f"RIASEC_{trait}_{sub_question}"
+            )
+            st.divider()
+            
+            selected_answers[f"RIASEC_{trait}_{sub_question}"] = next(
+                score for opt, score in question_data["options"] if opt == selected_answer
+            )
+        else:
+            st.error(f"Invalid question structure for {trait} - {sub_question}")
 
-# Output selected answers for debugging purposes (optional)
+# Debug output
 st.write("Selected Answers:", selected_answers)
 
 #end
