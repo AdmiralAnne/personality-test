@@ -303,8 +303,8 @@ selected_domains = st.multiselect(
     help="You can select multiple domains or areas of interest.",
 )
 
-# Join selected domains into a string
-domain_str = ", ".join(selected_domains) if selected_domains else "None"
+# If no domains are selected, set to "not provided"
+domain_str = ", ".join(selected_domains) if selected_domains else "not provided"
 
 # Store the selected domains and formatted string in session state
 st.session_state.selected_domains = selected_domains
