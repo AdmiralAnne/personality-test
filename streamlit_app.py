@@ -84,208 +84,121 @@ st.sidebar.info(
 questions = {
     "OCEAN": {
         "Openness": {
-            "question_1": "You're in a new city. What excites you the most?",
-            "options_1": [
-                ("Exploring unique places and trying new things.", 18),
-                ("Visiting recommended spots with familiar activities.", 15),
-                ("Balancing exploration with some routine activities.", 11),
-                ("Relaxing in familiar settings and avoiding too much exploring.", 6),
-                ("Sticking to routine activities indoors.", 3)
-            ],
-            "question_2": "How do you approach a new hobby?",
-            "options_2": [
-                ("Dive in, excited to explore and experiment.", 18),
-                ("Try it enthusiastically, with some guidance.", 15),
-                ("Experiment cautiously, balancing interest with comfort.", 11),
-                ("Stick to small, manageable parts of it.", 6),
-                ("Avoid new hobbies, preferring familiar routines.", 3)
-            ]
+            "question_1": {
+                "question": "Do you enjoy exploring new ideas and concepts?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you find abstract thinking exciting?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         },
         "Conscientiousness": {
-            "question_1": "How do you handle deadlines?",
-            "options_1": [
-                ("Plan ahead and ensure tasks are done early.", 18),
-                ("Work steadily, leaving some time for adjustments.", 15),
-                ("Balance deadlines with flexibility for changes.", 11),
-                ("Rush near the deadline, but get it done.", 6),
-                ("Feel unfazed and improvise as needed.", 3)
-            ],
-            "question_2": "What’s your work style?",
-            "options_2": [
-                ("Thorough and detail-oriented, sticking to plans.", 18),
-                ("Mostly organized, with room for flexibility.", 15),
-                ("Balanced, completing work efficiently but casually.", 11),
-                ("Prefer a relaxed approach, focusing on the essentials.", 6),
-                ("Spontaneous, relying on last-minute creativity.", 3)
-            ]
+            "question_1": {
+                "question": "Do you always strive to meet your goals?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you usually plan your tasks in advance?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         },
         "Extraversion": {
-            "question_1": "How do you feel in a social gathering?",
-            "options_1": [
-                ("Energized, chatting with everyone.", 18),
-                ("Engaged, joining group conversations.", 15),
-                ("Comfortable, connecting with a few people.", 11),
-                ("Quiet, sticking to smaller interactions.", 6),
-                ("Drained, preferring solitude.", 3)
-            ],
-            "question_2": "How do you spend your weekends?",
-            "options_2": [
-                ("Meeting friends or attending events.", 18),
-                ("Mixing social activities with downtime.", 15),
-                ("Relaxing with a small circle of friends.", 11),
-                ("Staying home, enjoying quiet hobbies.", 6),
-                ("Completely alone, focusing on personal interests.", 3)
-            ]
+            "question_1": {
+                "question": "Do you enjoy being the center of attention in social gatherings?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you feel energized when interacting with others?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         },
         "Agreeableness": {
-            "question_1": "How do you handle disagreements?",
-            "options_1": [
-                ("Listen patiently and find common ground.", 18),
-                ("Express your view respectfully.", 15),
-                ("Stay neutral, avoiding conflict.", 11),
-                ("Share your view directly, prioritizing honesty.", 6),
-                ("Assert your stance, valuing truth over harmony.", 3)
-            ],
-            "question_2": "How do you approach teamwork?",
-            "options_2": [
-                ("Collaborate smoothly, ensuring everyone feels valued.", 18),
-                ("Help others while focusing on your tasks.", 15),
-                ("Balance personal goals with group needs.", 11),
-                ("Work independently within the team.", 6),
-                ("Prefer to focus solely on your tasks.", 3)
-            ]
+            "question_1": {
+                "question": "Do you often consider the feelings of others before acting?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you avoid conflicts and prefer harmonious interactions?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         },
         "Neuroticism": {
-            "question_1": "How do you react to stress?",
-            "options_1": [
-                ("Feel overwhelmed but try to manage it.", 18),
-                ("Feel anxious but work through it.", 15),
-                ("Stay calm with some effort.", 11),
-                ("Manage stress well, rarely feeling shaken.", 6),
-                ("Remain unaffected, focusing on solutions.", 3)
-            ],
-            "question_2": "What’s your response to mistakes?",
-            "options_2": [
-                ("Analyze and feel critical about them.", 18),
-                ("Feel disappointed but correct them quickly.", 15),
-                ("Recognize and fix them calmly.", 11),
-                ("Acknowledge mistakes but avoid overthinking.", 6),
-                ("Brush them off, seeing them as learning moments.", 3)
-            ]
+            "question_1": {
+                "question": "Do you frequently feel anxious or stressed?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you find it hard to stay calm under pressure?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         }
     },
     "RIASEC": {
         "Realistic": {
-            "question_1": "What tasks do you prefer?",
-            "options_1": [
-                ("Hands-on work like fixing or building.", 18),
-                ("Mostly hands-on with some planning.", 15),
-                ("Balanced mix of hands-on and desk work.", 11),
-                ("Mostly desk-based, less physical.", 6),
-                ("Desk work entirely.", 3)
-            ],
-            "question_2": "What’s your ideal activity?",
-            "options_2": [
-                ("Outdoor adventures or practical challenges.", 18),
-                ("Mix of active tasks and planning.", 15),
-                ("Moderate activity with flexible tasks.", 11),
-                ("Light activity, avoiding heavy tasks.", 6),
-                ("Minimal activity, focusing on ideas.", 3)
-            ]
+            "question_1": {
+                "question": "Do you enjoy hands-on work, such as building or repairing things?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you prefer outdoor activities over desk jobs?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         },
         "Investigative": {
-            "question_1": "How do you handle new concepts?",
-            "options_1": [
-                ("Research in-depth and seek answers.", 18),
-                ("Explore when time allows.", 15),
-                ("Learn enough to get the gist.", 11),
-                ("Focus on practical outcomes.", 6),
-                ("Ignore unless necessary.", 3)
-            ],
-            "question_2": "What’s your approach to problems?",
-            "options_2": [
-                ("Analyze and experiment with solutions.", 18),
-                ("Explore solutions logically.", 15),
-                ("Try standard approaches first.", 11),
-                ("Solve quickly without overthinking.", 6),
-                ("Skip details, preferring quick fixes.", 3)
-            ]
+            "question_1": {
+                "question": "Do you enjoy solving complex problems or puzzles?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you prefer analyzing data over physical tasks?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         },
         "Artistic": {
-            "question_1": "How do you enjoy your free time?",
-            "options_1": [
-                ("Expressing creativity through art or ideas.", 18),
-                ("Mix of creative and structured hobbies.", 15),
-                ("Light creativity with routine hobbies.", 11),
-                ("Practical hobbies with occasional creativity.", 6),
-                ("Fully structured activities.", 3)
-            ],
-            "question_2": "What motivates you creatively?",
-            "options_2": [
-                ("Original expression and imagination.", 18),
-                ("Exploring creative outlets with guidance.", 15),
-                ("Structured creativity with clear goals.", 11),
-                ("Occasional creativity within limits.", 6),
-                ("Minimal interest in creative work.", 3)
-            ]
+            "question_1": {
+                "question": "Do you enjoy expressing yourself through art or music?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you often seek out creative outlets in your daily life?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         },
         "Social": {
-            "question_1": "How do you engage with communities?",
-            "options_1": [
-                ("Actively participate and lead events.", 18),
-                ("Support events if time allows.", 15),
-                ("Contribute occasionally.", 11),
-                ("Observe without much involvement.", 6),
-                ("Avoid participation.", 3)
-            ],
-            "question_2": "How do you handle group work?",
-            "options_2": [
-                ("Take the lead and guide others.", 18),
-                ("Participate actively but prefer not to lead.", 15),
-                ("Support quietly while following.", 11),
-                ("Engage minimally, focusing on your part.", 6),
-                ("Work best individually.", 3)
-            ]
+            "question_1": {
+                "question": "Do you enjoy helping others achieve their goals?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you feel fulfilled when you assist others in need?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         },
         "Enterprising": {
-            "question_1": "How do you approach leadership roles?",
-            "options_1": [
-                ("Take charge and organize confidently.", 18),
-                ("Lead when needed, staying adaptable.", 15),
-                ("Support leaders but prefer not to lead.", 11),
-                ("Avoid leading, focusing on tasks.", 6),
-                ("Stay in the background.", 3)
-            ],
-            "question_2": "How do you feel about taking risks?",
-            "options_2": [
-                ("Embrace calculated risks for growth.", 18),
-                ("Take some risks with careful planning.", 15),
-                ("Prefer safe approaches with occasional risks.", 11),
-                ("Avoid risks unless necessary.", 6),
-                ("Stick to secure, predictable choices.", 3)
-            ]
+            "question_1": {
+                "question": "Do you enjoy leading teams or projects?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you often seek opportunities to take risks for potential rewards?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         },
         "Conventional": {
-            "question_1": "How do you approach structure?",
-            "options_1": [
-                ("Create detailed plans and follow them.", 18),
-                ("Set flexible plans but stay organized.", 15),
-                ("Balance plans with adaptability.", 11),
-                ("Prefer minimal structure, working flexibly.", 6),
-                ("Avoid structure, working spontaneously.", 3)
-            ],
-            "question_2": "How do you handle unclear tasks?",
-            "options_2": [
-                ("Create clarity with structure.", 18),
-                ("Organize with some flexibility.", 15),
-                ("Adapt to unclear tasks with balance.", 11),
-                ("Work around ambiguity.", 6),
-                ("Ignore rules, focusing on instinct.", 3)
-            ]
+            "question_1": {
+                "question": "Do you prefer structured tasks with clear guidelines?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you enjoy organizing or managing data or records?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
         }
     }
 }
 
+# end
 
 
 # Initialize OpenAI client
