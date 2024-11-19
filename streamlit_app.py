@@ -65,7 +65,7 @@ st.sidebar.info(
 # sidebar
 
 
-# questions.py
+# start of questions.py
 questions = {
     "OCEAN": {
         "Openness": {
@@ -183,4 +183,28 @@ questions = {
     }
 }
 
-# end
+# end of questions
+
+# Initialize OpenAI client
+api_key = os.getenv("OPENAI_API_KEY")  # Store your key in an environment variable for security
+client = OpenAI(base_url="https://helixmind.online/v1", api_key=api_key)
+
+# Create a session state variable to store chat history
+if 'messages' not in st.session_state:
+    st.session_state.messages = [{"role": "system", "content": "You are a helpful assistant."}]
+
+# Function to send user input or prompt to OpenAI and get response
+def get_ai_response(prompt):
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4",  # Ensure the correct model name is used
+            messages=st.session_state.messages
+        )
+        ai_response = response.choices[0].message.content
+        st.session_state.messages.append({"role": "assistant", "content": ai_response})
+        return ai_response
+    except Exception as e:
+        st.error(f"Error: {e}")
+        return "Sorry, I couldn't process your request at the moment."
