@@ -281,6 +281,7 @@ domains = [
     "Automotive", "Retail", "Culinary Arts"
 ]
 
+# Select domains using a multiselect widget
 selected_domains = st.multiselect(
     label="Select Your Domains or Areas of Interest:",
     options=domains,
@@ -290,8 +291,13 @@ selected_domains = st.multiselect(
 # Join selected domains into a string
 domain_str = ", ".join(selected_domains) if selected_domains else "None"
 
+# Store the selected domains and formatted string in session state
+st.session_state.selected_domains = selected_domains
+st.session_state.domain_str = domain_str
+
 # Display selected domains
 st.write(f"Selected Domains of Interest: {domain_str}")
+
 
 
 # Add a button to calculate and display results
