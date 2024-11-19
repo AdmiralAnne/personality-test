@@ -298,8 +298,6 @@ st.session_state.domain_str = domain_str
 # Display selected domains
 st.write(f"Selected Domains of Interest: {domain_str}")
 
-
-
 # Add a button to calculate and display results
 if st.button('Calculate and Show Results'):
     # Calculate scores based on user input
@@ -381,28 +379,25 @@ if 'ocean_scores' in st.session_state:
 if 'riasec_scores' in st.session_state:
     st.write("### RIASEC Scores (Data)")
     st.write(st.session_state.riasec_scores)
-    
-# session state
-st.session_state.ocean_scores = ocean_scores
-st.session_state.top_3_riasec_code = top_3_riasec_code
 
+# Button to get job recommendations based on domains
 if st.button("Get My Top 20 Jobs"):
-    if 'ocean_scores' in st.session_state and 'top_3_riasec_code' in st.session_state:
+    if 'ocean_scores' in st.session_state and 'top_3_riasec_code' in st.session_state and 'domain_str' in st.session_state:
         ocean_scores = st.session_state['ocean_scores']
         top_3_riasec_code = st.session_state['top_3_riasec_code']
+        domain_str = st.session_state['domain_str']  # Fetch from session state
         
         # Format OCEAN scores into a string
         formatted_ocean_values_str = ' '.join([str(ocean_scores[key]) for key in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]])
         
-        # Prepare the generated query
-        domain_str = 'Technology'  # Example domain, modify based on input from user
+        # Prepare the generated query for job recommendations
         generated_prompt_query = f"""
             My RIASEC score is: {top_3_riasec_code}.
             My OCEAN scores are: {formatted_ocean_values_str} (Max score 40).
 
             Based on these traits, suggest the top 20 job titles for me, focusing on niche roles (no descriptions). Organize by domain if provided; if 'other' is selected, give general recommendations.
             Provided domain: {domain_str}
-            Only respond with the job tiles, properly numbered and organized. No filler texts in the begining or the end
+            Only respond with the job titles, properly numbered and organized. No filler texts in the beginning or the end
         """
         
         with st.spinner('Fetching your top 20 jobs...'):
@@ -410,8 +405,6 @@ if st.button("Get My Top 20 Jobs"):
             
             # Store the response and other relevant details in session state
             st.session_state.job_recommendations = ai_response
-            st.session_state.domain_str = domain_str
-            st.session_state.generated_prompt_query = generated_prompt_query
 
             # Displaying the response in a neat way
             st.subheader("Your personality fits the following possible occupations....")
@@ -419,6 +412,7 @@ if st.button("Get My Top 20 Jobs"):
             
     else:
         st.error("Please calculate your OCEAN and RIASEC scores first before getting job recommendations.")
+
 
 # Display the job recommendations and query if stored in session state
 # if 'job_recommendations' in st.session_state:
