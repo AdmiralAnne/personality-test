@@ -270,6 +270,21 @@ ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answe
 # st.write("RIASEC Scores:", riasec_scores)
 # st.write("Top 3 RIASEC Code:", top_3_riasec_code)
 
+# Prompt for educational background
+education_background = st.text_input(
+    label="Please enter your educational background:",
+    placeholder="e.g., Bachelor's in Computer Science, Master's in Business Administration",
+    help="Tell us about your educational qualifications."
+)
+
+# Store the educational background in session state
+if education_background:
+    st.session_state.education_background = education_background
+
+# Display the entered educational background (if available)
+if 'education_background' in st.session_state:
+    st.write(f"Your educational background: {st.session_state.education_background}")
+
 # Input domains
 domains = [
     "Technology", "Art", "Science", "Education", "Business", "Health", 
