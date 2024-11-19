@@ -209,3 +209,63 @@ def get_ai_response(prompt):
     except Exception as e:
         st.error(f"Error: {e}")
         return "Sorry, I couldn't process your request at the moment."
+
+# end of open ai client code
+
+
+# start of calc function
+
+# Function to calculate OCEAN and RIASEC scores based on selected answers
+def calculate_scores(selected_answers):
+    ocean_scores = {trait: 0 for trait in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]}
+    riasec_scores = {trait: 0 for trait in ["Realistic", "Investigative", "Artistic", "Social", "Enterprising", "Conventional"]}
+
+    # Calculate the scores based on the selected answers
+    for trait, questions_data in selected_answers.items():
+        for trait_name, answers in questions_data.items():
+            for question_key, selected_answer in answers.items():
+                # Get the score for the selected answer
+                for option, score in questions[trait][trait_name][question_key]["options"]:
+                    if option == selected_answer:
+                        if trait == "OCEAN":
+                            ocean_scores[trait_name] += score
+                        else:
+                            riasec_scores[trait_name] += score
+                        
+    # Sort RIASEC scores and extract the top 3
+    sorted_riasec = sorted(riasec_scores.items(), key=lambda x: x[1], reverse=True)
+    top_3_riasec_code = "".join([trait[0] for trait, score in sorted_riasec[:3]])
+
+    return ocean_scores, riasec_scores, top_3_riasec_code
+
+# Placeholder for user answers
+selected_answers = {
+    "OCEAN": {trait: {} for trait in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]},
+    "RIASEC": {trait: {} for trait in ["Realistic", "Investigative", "Artistic", "Social", "Enterprising", "Conventional"]}
+}
+
+# Collect user input for OCEAN traits
+st.markdown("### OCEAN Traits")
+for trait in selected_answers["OCEAN"]:
+    st.markdown(f"#### {trait}")
+    for q, question_data in questions["OCEAN"][trait].items():
+        question_text = question_data["question"]
+        options = [option for option, _ in question_data["options"]]
+        selected_answers["OCEAN"][trait][q] = st.radio(question_text, options, key=f"{trait}_{q}")
+
+# Collect user input for RIASEC traits
+st.markdown("### RIASEC Traits")
+for trait in selected_answers["RIASEC"]:
+    st.markdown(f"#### {trait}")
+    for q, question_data in questions["RIASEC"][trait].items():
+        question_text = question_data["question"]
+        options = [option for option, _ in question_data["options"]]
+        selected_answers["RIASEC"][trait][q] = st.radio(question_text, options, key=f"RIASEC_{trait}_{q}")
+
+# Calculate scores based on user input
+ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
+
+# Display scores for debugging
+st.write("OCEAN Scores:", ocean_scores)
+st.write("RIASEC Scores:", riasec_scores)
+st.write("Top 3 RIASEC Code:", top_3_riasec_code)
