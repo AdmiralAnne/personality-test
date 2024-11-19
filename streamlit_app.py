@@ -291,7 +291,7 @@ selected_domains = st.multiselect(
 domain_str = ", ".join(selected_domains) if selected_domains else "None"
 
 # Display selected domains
-st.write(f"### Selected Domains of Interest: {domain_str}")
+st.write(f"Selected Domains of Interest: {domain_str}")
 
 
 # Add a button to calculate and display results
