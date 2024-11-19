@@ -222,11 +222,9 @@ def get_ai_response(prompt):
 
 # Function to calculate OCEAN and RIASEC scores
 def calculate_scores(selected_answers):
-    # Initialize OCEAN and RIASEC score dictionaries
     ocean_scores = {trait: 0 for trait in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]}
     riasec_scores = {trait: 0 for trait in ["Realistic", "Investigative", "Artistic", "Social", "Enterprising", "Conventional"]}
 
-    # Define mapping for radio options to numerical scores
     score_mapping_ocean = {
         "Strongly Disagree": 1, "Disagree": 2, "Neutral": 3, "Agree": 4, "Strongly Agree": 5
     }
@@ -234,68 +232,91 @@ def calculate_scores(selected_answers):
         "Not at all": 1, "Somewhat": 2, "Moderately": 3, "Very": 4, "Extremely": 5
     }
 
-    # Iterate through selected answers to calculate scores
-    for trait, questions in selected_answers.items():
+    # Calculate the scores based on the user's selected answers
+    for trait, answers in selected_answers.items():
         if trait in ocean_scores:
-            for _, score in questions.items():
-                ocean_scores[trait] += score_mapping_ocean[score]
+            for answer in answers.values():
+                ocean_scores[trait] += score_mapping_ocean[answer]
         elif trait in riasec_scores:
-            for _, score in questions.items():
-                riasec_scores[trait] += score_mapping_riasec[score]
+            for answer in answers.values():
+                riasec_scores[trait] += score_mapping_riasec[answer]
 
-    # Sort RIASEC scores and extract the top-3 traits for the RIASEC code
+    # Extract the top 3 RIASEC traits
     sorted_riasec = sorted(riasec_scores.items(), key=lambda x: x[1], reverse=True)
     top_3_riasec_code = "".join([trait[0] for trait, score in sorted_riasec[:3]])
 
     return ocean_scores, riasec_scores, top_3_riasec_code
 
-# Placeholder for selected answers
+# Placeholder for user answers
 selected_answers = {
-    "OCEAN": {
-        "Openness": {},
-        "Conscientiousness": {},
-        "Extraversion": {},
-        "Agreeableness": {},
-        "Neuroticism": {}
-    },
-    "RIASEC": {
-        "Realistic": {},
-        "Investigative": {},
-        "Artistic": {},
-        "Social": {},
-        "Enterprising": {},
-        "Conventional": {}
-    }
+    "OCEAN": {trait: {} for trait in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]},
+    "RIASEC": {trait: {} for trait in ["Realistic", "Investigative", "Artistic", "Social", "Enterprising", "Conventional"]}
 }
 
-# Display OCEAN traits questions
+# Collect user input for OCEAN traits
 st.markdown("### OCEAN Traits")
-for trait, questions in selected_answers["OCEAN"].items():
-    st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
-    for sub_question in range(1, 4):  # Example: 3 questions per trait
-        question_text = f"{trait} Question {sub_question}?"
-        st.markdown(f"<p style='font-size:24px;'>{question_text}</p>", unsafe_allow_html=True)
-        selected_answer = st.radio(
-            "",
-            options=["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-            key=f"{trait}_q{sub_question}"
-        )
-        selected_answers["OCEAN"][trait][f"q{sub_question}"] = selected_answer
+for trait in selected_answers["OCEAN"]:
+    st.markdown(f"#### {trait}")
+    for q in range(1, 4):  # Assuming 3 questions per trait
+        question_text = f"How strongly do you agree with the following statement regarding {trait}?"
+        answer = st.radio(question_text, ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"], key=f"{trait}_q{q}")
+        selected_answers["OCEAN"][trait][f"q{q}"] = answer
 
-# Display RIASEC traits questions
+# Collect user input for RIASEC traits
 st.markdown("### RIASEC Traits")
-for trait, questions in selected_answers["RIASEC"].items():
-    st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
-    for sub_question in range(1, 4):  # Example: 3 questions per trait
-        question_text = f"{trait} Question {sub_question}?"
-        st.markdown(f"<p style='font-size:24px;'>{question_text}</p>", unsafe_allow_html=True)
-        selected_answer = st.radio(
-            "",
-            options=["Not at all", "Somewhat", "Moderately", "Very", "Extremely"],
-            key=f"RIASEC_{trait}_q{sub_question}"
-        )
-        selected_answers["RIASEC"][trait][f"q{sub_question}"] = selected_answer
+for trait in selected_answers["RIASEC"]:
+    st.markdown(f"#### {trait}")
+    for q in range(1, 4):  # Assuming 3 questions per trait
+        question_text = f"How much do you enjoy {trait} activities?"
+        answer = st.radio(question_text, ["Not at all", "Somewhat", "Moderately", "Very", "Extremely"], key=f"RIASEC_{trait}_q{q}")
+        selected_answers["RIASEC"][trait][f"q{q}"] = answer
 
+# Input domains
+domains = ["Technology", "Art", "Science", "Education", "Business", "Health", "Sports", "Other"]
+selected_domains = st.multiselect("Select Your Domains or Areas of Interest:", domains)
+
+# Button to calculate scores
+if st.button("Calculate Scores"):
+    ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
+    st.session_state['ocean_scores'] = ocean_scores
+    st.session_state['riasec_scores'] = riasec_scores
+    st.session_state['top_3_riasec_code'] = top_3_riasec_code
+
+    st.subheader(f"Top-3 RIASEC Code: {top_3_riasec_code}")
+
+    # Plot OCEAN scores
+    fig_ocean, ax1 = plt.subplots(figsize=(8, 5))
+    extremes = {
+        "Openness": ("Closed", "Open"),
+        "Conscientiousness": ("Carefree", "Conscientious"),
+        "Extraversion": ("Introvert", "Extrovert"),
+        "Agreeableness": ("Assertive", "Agreeable"),
+        "Neuroticism": ("Calm", "Anxious")
+    }
+    for idx, (trait, score) in enumerate(ocean_scores.items()):
+        ax1.plot([0, 40], [idx, idx], 'k-', lw=1)
+        ax1.plot(score, idx, 'o', color="skyblue", markersize=8)
+        ax1.text(0, idx, extremes[trait][0], va='center', ha='right')
+        ax1.text(40, idx, extremes[trait][1], va='center', ha='left')
+        ax1.text(score, idx + 0.1, str(score), color="black", ha='center')
+    ax1.set_title("OCEAN Personality Traits")
+    ax1.set_yticks(range(len(ocean_scores)))
+    ax1.set_yticklabels(list(ocean_scores.keys()))
+    ax1.invert_yaxis()
+    st.pyplot(fig_ocean)
+
+    # Plot RIASEC scores
+    fig_riasec, ax2 = plt.subplots(figsize=(8, 5))
+    riasec_df = pd.DataFrame(list(riasec_scores.items()), columns=['Trait', 'Score'])
+    riasec_df.plot(kind='barh', x='Trait', y='Score', ax=ax2, color='salmon', legend=False)
+    ax2.set_title("RIASEC Career Interest Scores")
+    ax2.set_xlabel("Score")
+    ax2.set_ylabel("Trait")
+    for idx, score in enumerate(riasec_df['Score']):
+        ax2.text(score + 1, idx, str(score), color="black", va='center')
+    st.pyplot(fig_riasec)
+else:
+    st.warning("Please calculate your scores first.")
 # Debug output
 st.write("Selected Answers:", selected_answers)
 
@@ -375,45 +396,10 @@ with st.expander("Read more about Each Trait"):
     st.image("https://i.ibb.co/MkNmm31/chart1.jpg", caption="OCEAN Traits Image")
     st.image("https://i.ibb.co/SXxHm97/chart2.jpg", caption="RIASEC Traits Image")
 
-# links: https://i.ibb.co/MkNmm31/chart1.jpg
-# https://i.ibb.co/SXxHm97/chart2.jpg
-
-# chart
-
-# Button for job recommendations
-if st.button("Get My Top 15 Jobs"):
-    if 'ocean_scores' in st.session_state and 'top_3_riasec_code' in st.session_state:
-        ocean_scores = st.session_state['ocean_scores']
-        top_3_riasec_code = st.session_state['top_3_riasec_code']
-        formatted_ocean_values_str = ' '.join([str(ocean_scores[key]) for key in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]])
-        generated_prompt_query = f"""
-            My RIASEC score is: {top_3_riasec_code}.
-            My OCEAN scores are: {formatted_ocean_values_str} (Openness, Conscientiousness,
-            Extraversion, Agreeableness, Neuroticism respectively). 40 being the max score.
-            
-            Based on these traits, give me a list of the top 20 jobs that would be suitable for me.
-            Don't make thes jobs too vague . . go into more niche categories and fetch interesting titles. 
-            Just write the job titles, no description needed.
-
-            based on: this domain: {domain_str}. If 'other' is Provided, give a general recommendation.
-
-            Organize the jobs neatly acording to domain if provided.
-
-            also write a very crispt and short "30 words" summary talking about: The Industries I might be good at in. Keep it in points only.
-            tone: keep it super friendlt and chill.
-            """
-        with st.spinner('Fetching your top 20 jobs...'):
-            ai_response = get_ai_response(generated_prompt_query)
-            st.subheader("Your personality fits the following possible occupations....")
-            st.write(ai_response)
-    else:
-        st.error("Please calculate your scores first.")
-
-import streamlit as st
-
 st.divider()
 st.divider()
 st.divider()
+
 # Expander with Important Links
 with st.expander("Important Links"):
     st.markdown("### Sources")
