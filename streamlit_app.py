@@ -415,9 +415,9 @@ if st.button("Get My Top 20 Jobs"):
         st.error("Please calculate your OCEAN and RIASEC scores first before getting job recommendations.")
 
 # Display the job recommendations and query if stored in session state
-if 'job_recommendations' in st.session_state:
-    st.write("### Job Recommendations Based on Your Scores:")
-    st.write(st.session_state.job_recommendations)
+# if 'job_recommendations' in st.session_state:
+    # st.write("### Job Recommendations Based on Your Scores:")
+    # st.write(st.session_state.job_recommendations)
 
 # if 'generated_prompt_query' in st.session_state:
     # st.write("### Generated Query Used:")
