@@ -220,15 +220,22 @@ def get_ai_response(prompt):
 
 # Function to calculate OCEAN and RIASEC scores
 def calculate_scores(selected_answers):
+    # Initialize OCEAN and RIASEC score dictionaries
     ocean_scores = {trait: 0 for trait in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]}
     riasec_scores = {trait: 0 for trait in ["Realistic", "Investigative", "Artistic", "Social", "Enterprising", "Conventional"]}
-    
-    for trait, answer in selected_answers.items():
-        if trait in ocean_scores:
-            ocean_scores[trait] += answer
-        elif trait in riasec_scores:
-            riasec_scores[trait] += answer
 
+    # Iterate through selected answers to calculate scores
+    for trait, questions in selected_answers.items():
+        # Check if the trait belongs to OCEAN
+        if trait in ocean_scores:
+            for _, score in questions.items():
+                ocean_scores[trait] += score
+        # Check if the trait belongs to RIASEC
+        elif trait in riasec_scores:
+            for _, score in questions.items():
+                riasec_scores[trait] += score
+
+    # Sort RIASEC scores and extract the top-3 traits for the RIASEC code
     sorted_riasec = sorted(riasec_scores.items(), key=lambda x: x[1], reverse=True)
     top_3_riasec_code = "".join([trait[0] for trait, score in sorted_riasec[:3]])
 
@@ -340,7 +347,7 @@ if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
     # Plot OCEAN traits
     fig_ocean, ax1 = plt.subplots(figsize=(8, 5))
     for idx, (trait, score) in enumerate(st.session_state['ocean_scores'].items()):
-        ax1.plot([0, 20], [idx, idx], 'k-', lw=1)  # Horizontal line from 0 to 20
+        ax1.plot([0, 40], [idx, idx], 'k-', lw=1)  # Horizontal line from 0 to 20
         ax1.plot(score, idx, 'o', color="skyblue", markersize=8)  # Plot score as a dot
         ax1.text(0, idx, extremes[trait][0], va='center', ha='right')  # Left label
         ax1.text(20, idx, extremes[trait][1], va='center', ha='left')  # Right label
