@@ -407,3 +407,46 @@ if st.button("Get My Top 15 Jobs"):
             
     else:
         st.error("Please calculate your OCEAN and RIASEC scores first before getting job recommendations.")
+
+
+st.divider()
+st.divider()
+st.divider()
+
+# Expander with Important Links
+with st.expander("Important Links"):
+    st.markdown("### Sources")
+    st.write("[Source Code - Github for this website](https://github.com/AdmiralAnne/personality-test)")
+    st.write("[Questionnaire Sources](https://docs.google.com/spreadsheets/d/1qUE0sGZfC5jxx-gi-HfJR0wmeRWJUZS6HexJvWu9agE/edit?usp=sharing)")
+    st.write("[Dataset Sources](https://docs.google.com/spreadsheets/d/1wBFU0WdFfEDZGT21f3agZtHEyVInEMC_4maf3zkMsTA/edit?gid=0#gid=0)")
+    st.write("[Link to System Architecture / Diagrams](https://excalidraw.com/#json=JCYgsb4EfJPD-aYiywoFR,EIlEyOdZ4OyAN8drdiOEWg)")
+    st.write("[Google Colab Notebook](https://colab.research.google.com/drive/1n_qZKStxZpfBBr0pLDm40sLjZ-ifgur2?usp=sharing)")
+
+# Section on Future Prospects
+with st.expander("Future Prospects for the Project"):
+    st.info(
+        """
+        - **Enhanced Model Customization**: aim to refine the model, incorporating user feedback.
+        - **More Curated Questions**: The questionnaire will be expanded with more nuanced questions.
+        - **Guidance for Career Paths**: suggest additional resources to help users explore career paths that align with their interests.
+        """
+    )
+
+with st.expander("Architecture / Diagrams"):
+    st.image("https://i.ibb.co/vmK5tyH/diagram.png", caption="System Architecture")
+
+st.divider()
+st.divider()
+st.divider()
+
+st.info(
+    """
+    #### Special thanks to: 
+    - **Meet Dudhat - U21CS483 ( Lead developer, Having fun at home in Gujarat)**
+    - **Jagadeesh - U21CS464 ( Thin Guy, Likes Research and Coding )**
+    - **Dr P Vasuki ( Beloved Guide - Guiding Pillar of our project)**
+    - **Kameshwari Ma'am ( Best Mentor award )**
+    - **Marjiba - u21cs474 ( Creative Solutions and Designer )**
+    """
+)
+
