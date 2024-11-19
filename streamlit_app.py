@@ -412,6 +412,7 @@ if st.button("Get My Top 20 Jobs"):
 
             Based on these traits, suggest the top 20 job titles for me, focusing on niche roles (no descriptions). Organize by domain if provided; if 'other' is selected, give general recommendations.
             Provided domain: {domain_str}
+            Consider my education as well: {education_background} - Ignore if no info is provided
             Only respond with the job titles, properly numbered and organized. No filler texts in the beginning or the end
         """
         
