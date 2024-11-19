@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-st.header("Psychometric Personality assessment and career matching.")
+st.header("Psychoanalytic Personality assessment and career matching.")
 st.write("Imagine yourself in these scenarios and answer 11 questions to find your -loosely ideal- career path: (beta version 0.2.0)")
 # instructions
 
@@ -381,7 +381,7 @@ st.session_state.ocean_scores = ocean_scores
 st.session_state.top_3_riasec_code = top_3_riasec_code
 
 # Button for job recommendations
-if st.button("Get My Top 15 Jobs"):
+if st.button("Get My Top 20 Jobs"):
     if 'ocean_scores' in st.session_state and 'top_3_riasec_code' in st.session_state:
         ocean_scores = st.session_state['ocean_scores']
         top_3_riasec_code = st.session_state['top_3_riasec_code']
@@ -393,13 +393,13 @@ if st.button("Get My Top 15 Jobs"):
         generated_prompt_query = f"""
             My RIASEC score is: {top_3_riasec_code}.
             My OCEAN scores are: {formatted_ocean_values_str} (Max score 40).
-
-            Based on these traits, suggest the top 20 job titles for me, focusing on niche roles (no descriptions). Organize by domain if provided; if 'other' is selected, give general recommendations.
-            procided domain: {domain_str}
-            Also, provide a brief 30-word summary on industries I might excel in. Keep it friendly and chill.
+            Based on these traits, suggest the top 20 job titles for me, focusing on Good Scope roles (no descriptions). 
+            Organize by domain if provided; if 'other' is selected, give general recommendations.
+            procided domain: {domain_str} 
+            
             """
         
-        with st.spinner('Fetching your top 15 jobs...'):
+        with st.spinner('Fetching your top 20 jobs...'):
             ai_response = get_ai_response(generated_prompt_query)
             # Displaying the response in a neat way
             st.subheader("Your personality fits the following possible occupations....")
@@ -410,8 +410,7 @@ if st.button("Get My Top 15 Jobs"):
 
 
 st.divider()
-st.divider()
-st.divider()
+
 
 # Expander with Important Links
 with st.expander("Important Links"):
@@ -436,8 +435,7 @@ with st.expander("Architecture / Diagrams"):
     st.image("https://i.ibb.co/vmK5tyH/diagram.png", caption="System Architecture")
 
 st.divider()
-st.divider()
-st.divider()
+
 
 st.info(
     """
