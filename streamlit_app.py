@@ -312,27 +312,23 @@ domain_str = ", ".join(selected_domains) if selected_domains else "None"
 
 # Button to calculate scores
 if st.button("Calculate Scores"):
+    # Calculate OCEAN and RIASEC scores based on selected answers
     ocean_scores, riasec_scores, top_3_riasec_code = calculate_scores(selected_answers)
     st.session_state['ocean_scores'] = ocean_scores
     st.session_state['riasec_scores'] = riasec_scores
     st.session_state['top_3_riasec_code'] = top_3_riasec_code
 
-    #st.header("Your Results")
-    #st.subheader("OCEAN Scores")
-    #for trait_name, score_value in ocean_scores.items():
-    #    st.write(f"{trait_name}: {score_value}")
-    #st.subheader("RIASEC Scores")
-    #for trait_name_riasec, score_value_riasec in riasec_scores.items():
-    #    st.write(f"{trait_name_riasec}: {score_value_riasec}")
+    # Display the top-3 RIASEC code
     st.subheader("Top-3 RIASEC Code:")
     st.write(f"Your top-3 RIASEC code is: {top_3_riasec_code}")
 
 # Check if scores are available before plotting
 if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
+    # Convert scores into DataFrames for easier visualization
     ocean_df = pd.DataFrame(list(st.session_state['ocean_scores'].items()), columns=['Trait', 'Score'])
     riasec_df = pd.DataFrame(list(st.session_state['riasec_scores'].items()), columns=['Trait', 'Score'])
     
-    # Define trait labels for the OCEAN plot extremes
+    # Define labels for the OCEAN plot extremes
     extremes = {
         "Openness": ("Closed", "Open"),
         "Conscientiousness": ("Carefree", "Conscientious"),
@@ -341,20 +337,20 @@ if 'ocean_scores' in st.session_state and 'riasec_scores' in st.session_state:
         "Neuroticism": ("Calm", "Anxious")
     }
     
-    # Plot OCEAN traits as horizontal lines with markers for scores
+    # Plot OCEAN traits
     fig_ocean, ax1 = plt.subplots(figsize=(8, 5))
     for idx, (trait, score) in enumerate(st.session_state['ocean_scores'].items()):
-        ax1.plot([0, 40], [idx, idx], 'k-', lw=1)  # Horizontal line from 0 to 40
+        ax1.plot([0, 20], [idx, idx], 'k-', lw=1)  # Horizontal line from 0 to 20
         ax1.plot(score, idx, 'o', color="skyblue", markersize=8)  # Plot score as a dot
         ax1.text(0, idx, extremes[trait][0], va='center', ha='right')  # Left label
-        ax1.text(40, idx, extremes[trait][1], va='center', ha='left')  # Right label
+        ax1.text(20, idx, extremes[trait][1], va='center', ha='left')  # Right label
         ax1.text(score, idx + 0.1, str(score), color="black", ha='center')  # Score label above the dot
 
     # Customize OCEAN plot
     ax1.set_title("OCEAN Personality Traits")
     ax1.set_yticks(range(len(st.session_state['ocean_scores'])))
     ax1.set_yticklabels(list(st.session_state['ocean_scores'].keys()))
-    ax1.set_xlim(-5, 45)
+    ax1.set_xlim(-2, 22)
     ax1.set_xticks([])  # Remove x-axis ticks for cleanliness
     ax1.invert_yaxis()  # Invert y-axis to match question order
     ax1.grid(False)  # Remove grid for a cleaner look
