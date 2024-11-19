@@ -187,8 +187,8 @@ questions = {
 # end of questions
 
 # Initialize OpenAI client
-api_key = os.getenv("helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM")  # Store your key in an environment variable for security
-client = OpenAI(base_url="https://helixmind.online/v1", api_key='api_key')
+# api_key = os.getenv("helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM")  # Store your key in an environment variable for security
+client = OpenAI(base_url="https://helixmind.online/v1", api_key='helix-4WaTFs3z-dJo_sB5myl2mPOzDPhhWZN7GjuedAUZwGM')
 
 # Create a session state variable to store chat history
 if 'messages' not in st.session_state:
