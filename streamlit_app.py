@@ -380,7 +380,6 @@ if 'riasec_scores' in st.session_state:
 st.session_state.ocean_scores = ocean_scores
 st.session_state.top_3_riasec_code = top_3_riasec_code
 
-# Button for job recommendations
 if st.button("Get My Top 20 Jobs"):
     if 'ocean_scores' in st.session_state and 'top_3_riasec_code' in st.session_state:
         ocean_scores = st.session_state['ocean_scores']
@@ -390,23 +389,43 @@ if st.button("Get My Top 20 Jobs"):
         formatted_ocean_values_str = ' '.join([str(ocean_scores[key]) for key in ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"]])
         
         # Prepare the generated query
+        domain_str = 'Technology'  # Example domain, modify based on input from user
         generated_prompt_query = f"""
             My RIASEC score is: {top_3_riasec_code}.
             My OCEAN scores are: {formatted_ocean_values_str} (Max score 40).
-            Based on these traits, suggest the top 20 job titles for me, focusing on Good Scope roles (no descriptions). 
-            Organize by domain if provided; if 'other' is selected, give general recommendations.
-            procided domain: {domain_str} 
-            
-            """
+
+            Based on these traits, suggest the top 20 job titles for me, focusing on niche roles (no descriptions). Organize by domain if provided; if 'other' is selected, give general recommendations.
+            Provided domain: {domain_str}
+            Also, provide a brief 30-word summary on industries I might excel in. Keep it friendly and chill.
+        """
         
         with st.spinner('Fetching your top 20 jobs...'):
             ai_response = get_ai_response(generated_prompt_query)
+            
+            # Store the response and other relevant details in session state
+            st.session_state.job_recommendations = ai_response
+            st.session_state.domain_str = domain_str
+            st.session_state.generated_prompt_query = generated_prompt_query
+
             # Displaying the response in a neat way
             st.subheader("Your personality fits the following possible occupations....")
             st.write(ai_response)
             
     else:
         st.error("Please calculate your OCEAN and RIASEC scores first before getting job recommendations.")
+
+# Display the job recommendations and query if stored in session state
+if 'job_recommendations' in st.session_state:
+    st.write("### Job Recommendations Based on Your Scores:")
+    st.write(st.session_state.job_recommendations)
+
+if 'generated_prompt_query' in st.session_state:
+    st.write("### Generated Query Used:")
+    st.write(st.session_state.generated_prompt_query)
+
+if 'domain_str' in st.session_state:
+    st.write("### Provided Domain:")
+    st.write(st.session_state.domain_str)
 
 
 st.divider()
