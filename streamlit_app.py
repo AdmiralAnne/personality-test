@@ -63,3 +63,124 @@ st.sidebar.info(
 )
 
 # sidebar
+
+
+# questions.py
+questions = {
+    "OCEAN": {
+        "Openness": {
+            "question_1": {
+                "question": "Do you enjoy exploring new ideas and concepts?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you find abstract thinking exciting?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        },
+        "Conscientiousness": {
+            "question_1": {
+                "question": "Do you always strive to meet your goals?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you usually plan your tasks in advance?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        },
+        "Extraversion": {
+            "question_1": {
+                "question": "Do you enjoy being the center of attention in social gatherings?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you feel energized when interacting with others?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        },
+        "Agreeableness": {
+            "question_1": {
+                "question": "Do you often consider the feelings of others before acting?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you avoid conflicts and prefer harmonious interactions?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        },
+        "Neuroticism": {
+            "question_1": {
+                "question": "Do you frequently feel anxious or stressed?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you find it hard to stay calm under pressure?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        }
+    },
+    "RIASEC": {
+        "Realistic": {
+            "question_1": {
+                "question": "Do you enjoy hands-on work, such as building or repairing things?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you prefer outdoor activities over desk jobs?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        },
+        "Investigative": {
+            "question_1": {
+                "question": "Do you enjoy solving complex problems or puzzles?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you prefer analyzing data over physical tasks?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        },
+        "Artistic": {
+            "question_1": {
+                "question": "Do you enjoy expressing yourself through art or music?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you often seek out creative outlets in your daily life?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        },
+        "Social": {
+            "question_1": {
+                "question": "Do you enjoy helping others achieve their goals?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you feel fulfilled when you assist others in need?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        },
+        "Enterprising": {
+            "question_1": {
+                "question": "Do you enjoy leading teams or projects?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you often seek opportunities to take risks for potential rewards?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        },
+        "Conventional": {
+            "question_1": {
+                "question": "Do you prefer structured tasks with clear guidelines?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            },
+            "question_2": {
+                "question": "Do you enjoy organizing or managing data or records?",
+                "options": [("Strongly Agree", 18), ("Agree", 15), ("Neutral", 12), ("Disagree", 6), ("Strongly Disagree", 3)]
+            }
+        }
+    }
+}
+
+# end
