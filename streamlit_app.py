@@ -84,119 +84,208 @@ st.sidebar.info(
 questions = {
     "OCEAN": {
         "Openness": {
-            "question": "You find yourself in a new city with some free time. What are you most likely to do?",
-            "options": [
-                ("Explore the lesser-known neighborhoods and try new activities.", 35),
-                ("Visit a few recommended spots but stick to familiar activities.", 30),
-                ("Balance some exploring with some relaxation in familiar places.", 22),
-                ("Find a comfortable, familiar place to relax and avoid exploring too much.", 12),
-                ("Stay in, preferring the comfort of routine activities.", 5)
+            "question_1": "You're in a new city. What excites you the most?",
+            "options_1": [
+                ("Exploring unique places and trying new things.", 18),
+                ("Visiting recommended spots with familiar activities.", 15),
+                ("Balancing exploration with some routine activities.", 11),
+                ("Relaxing in familiar settings and avoiding too much exploring.", 6),
+                ("Sticking to routine activities indoors.", 3)
+            ],
+            "question_2": "How do you approach a new hobby?",
+            "options_2": [
+                ("Dive in, excited to explore and experiment.", 18),
+                ("Try it enthusiastically, with some guidance.", 15),
+                ("Experiment cautiously, balancing interest with comfort.", 11),
+                ("Stick to small, manageable parts of it.", 6),
+                ("Avoid new hobbies, preferring familiar routines.", 3)
             ]
         },
         "Conscientiousness": {
-            "question": "You have an upcoming deadline for an important project, but your friends invite you out. How do you handle this?",
-            "options": [
-                ("Politely decline, prioritizing your project to ensure it's done thoroughly.", 35),
-                ("Set aside time to work but try to join for a little while.", 30),
-                ("Try to balance your project and going out, even if it means a bit less sleep.", 22),
-                ("Go out and plan to catch up on work afterward, even if rushed.", 12),
-                ("Accept the invite, enjoying spontaneity, and complete the project as best you can.", 5)
+            "question_1": "How do you handle deadlines?",
+            "options_1": [
+                ("Plan ahead and ensure tasks are done early.", 18),
+                ("Work steadily, leaving some time for adjustments.", 15),
+                ("Balance deadlines with flexibility for changes.", 11),
+                ("Rush near the deadline, but get it done.", 6),
+                ("Feel unfazed and improvise as needed.", 3)
+            ],
+            "question_2": "What’s your work style?",
+            "options_2": [
+                ("Thorough and detail-oriented, sticking to plans.", 18),
+                ("Mostly organized, with room for flexibility.", 15),
+                ("Balanced, completing work efficiently but casually.", 11),
+                ("Prefer a relaxed approach, focusing on the essentials.", 6),
+                ("Spontaneous, relying on last-minute creativity.", 3)
             ]
         },
         "Extraversion": {
-            "question": "You’re at a gathering where you don’t know many people. How do you respond?",
-            "options": [
-                ("Dive into the crowd, starting conversations with as many people as possible.", 35),
-                ("Approach a few groups, joining in and sharing stories.", 30),
-                ("Chat with one or two people you know or sit back and observe.", 22),
-                ("Find a quieter spot to engage with only one or two people.", 12),
-                ("Prefer to keep to yourself and observe rather than actively engaging.", 5)
+            "question_1": "How do you feel in a social gathering?",
+            "options_1": [
+                ("Energized, chatting with everyone.", 18),
+                ("Engaged, joining group conversations.", 15),
+                ("Comfortable, connecting with a few people.", 11),
+                ("Quiet, sticking to smaller interactions.", 6),
+                ("Drained, preferring solitude.", 3)
+            ],
+            "question_2": "How do you spend your weekends?",
+            "options_2": [
+                ("Meeting friends or attending events.", 18),
+                ("Mixing social activities with downtime.", 15),
+                ("Relaxing with a small circle of friends.", 11),
+                ("Staying home, enjoying quiet hobbies.", 6),
+                ("Completely alone, focusing on personal interests.", 3)
             ]
         },
         "Agreeableness": {
-            "question": "A friend has a strong opinion about a topic, but you disagree. How do you handle the situation?",
-            "options": [
-                ("Listen and respond kindly, focusing on understanding their perspective.", 35),
-                ("Acknowledge their points while gently sharing your view.", 30),
-                ("Consider their side but stay neutral in sharing your opinion.", 22),
-                ("Offer your differing perspective with minimal compromise.", 12),
-                ("Challenge their view, preferring honesty over harmony.", 5)
+            "question_1": "How do you handle disagreements?",
+            "options_1": [
+                ("Listen patiently and find common ground.", 18),
+                ("Express your view respectfully.", 15),
+                ("Stay neutral, avoiding conflict.", 11),
+                ("Share your view directly, prioritizing honesty.", 6),
+                ("Assert your stance, valuing truth over harmony.", 3)
+            ],
+            "question_2": "How do you approach teamwork?",
+            "options_2": [
+                ("Collaborate smoothly, ensuring everyone feels valued.", 18),
+                ("Help others while focusing on your tasks.", 15),
+                ("Balance personal goals with group needs.", 11),
+                ("Work independently within the team.", 6),
+                ("Prefer to focus solely on your tasks.", 3)
             ]
         },
         "Neuroticism": {
-            "question": "You’ve made a minor mistake at work. How do you feel and respond?",
-            "options": [
-                ("Worry and analyze the mistake, feeling self-critical.", 35),
-                ("Feel disappointed but work on fixing it quickly.", 30),
-                ("Recognize the error, feeling mildly affected but moving on.", 22),
-                ("Acknowledge it but feel little stress, seeing it as a small error.", 12),
-                ("Remain calm, viewing it as a learning opportunity without worry.", 5)
+            "question_1": "How do you react to stress?",
+            "options_1": [
+                ("Feel overwhelmed but try to manage it.", 18),
+                ("Feel anxious but work through it.", 15),
+                ("Stay calm with some effort.", 11),
+                ("Manage stress well, rarely feeling shaken.", 6),
+                ("Remain unaffected, focusing on solutions.", 3)
+            ],
+            "question_2": "What’s your response to mistakes?",
+            "options_2": [
+                ("Analyze and feel critical about them.", 18),
+                ("Feel disappointed but correct them quickly.", 15),
+                ("Recognize and fix them calmly.", 11),
+                ("Acknowledge mistakes but avoid overthinking.", 6),
+                ("Brush them off, seeing them as learning moments.", 3)
             ]
         }
     },
     "RIASEC": {
         "Realistic": {
-            "question": "You’re presented with two tasks: one involving hands-on work and the other requiring desk research. Which do you prefer?",
-            "options": [
-                ("Eagerly choose the hands-on work.", 35),
-                ("Prefer hands-on tasks but are open to balancing both.", 30),
-                ("Choose based on the task’s impact, whether hands-on or research-based.", 22),
-                ("Lean towards research but are open to a mix.", 12),
-                ("Opt for the research, preferring to avoid physical tasks.", 5)
+            "question_1": "What tasks do you prefer?",
+            "options_1": [
+                ("Hands-on work like fixing or building.", 18),
+                ("Mostly hands-on with some planning.", 15),
+                ("Balanced mix of hands-on and desk work.", 11),
+                ("Mostly desk-based, less physical.", 6),
+                ("Desk work entirely.", 3)
+            ],
+            "question_2": "What’s your ideal activity?",
+            "options_2": [
+                ("Outdoor adventures or practical challenges.", 18),
+                ("Mix of active tasks and planning.", 15),
+                ("Moderate activity with flexible tasks.", 11),
+                ("Light activity, avoiding heavy tasks.", 6),
+                ("Minimal activity, focusing on ideas.", 3)
             ]
         },
         "Investigative": {
-            "question": "You encounter an unfamiliar concept. How do you handle it?",
-            "options": [
-                ("Dive into research, seeking detailed understanding and answers.", 35),
-                ("Look into it as time allows, appreciating learning.", 30),
-                ("Seek general understanding and move on.", 22),
-                ("Prefer to rely on familiar knowledge, avoiding in-depth research.", 12),
-                ("Avoid focusing on it, favoring practical solutions over research.", 5)
+            "question_1": "How do you handle new concepts?",
+            "options_1": [
+                ("Research in-depth and seek answers.", 18),
+                ("Explore when time allows.", 15),
+                ("Learn enough to get the gist.", 11),
+                ("Focus on practical outcomes.", 6),
+                ("Ignore unless necessary.", 3)
+            ],
+            "question_2": "What’s your approach to problems?",
+            "options_2": [
+                ("Analyze and experiment with solutions.", 18),
+                ("Explore solutions logically.", 15),
+                ("Try standard approaches first.", 11),
+                ("Solve quickly without overthinking.", 6),
+                ("Skip details, preferring quick fixes.", 3)
             ]
         },
         "Artistic": {
-            "question": "You have some free time. How would you most enjoy spending it?",
-            "options": [
-                ("Working on a creative project, expressing yourself through art or writing.", 35),
-                ("Exploring a creative activity but also enjoying structured hobbies.", 30),
-                ("Balancing creativity with other, more routine hobbies.", 22),
-                ("Prefer practical tasks over creativity, only engaging occasionally.", 12),
-                ("Enjoy structured activities without creative elements.", 5)
+            "question_1": "How do you enjoy your free time?",
+            "options_1": [
+                ("Expressing creativity through art or ideas.", 18),
+                ("Mix of creative and structured hobbies.", 15),
+                ("Light creativity with routine hobbies.", 11),
+                ("Practical hobbies with occasional creativity.", 6),
+                ("Fully structured activities.", 3)
+            ],
+            "question_2": "What motivates you creatively?",
+            "options_2": [
+                ("Original expression and imagination.", 18),
+                ("Exploring creative outlets with guidance.", 15),
+                ("Structured creativity with clear goals.", 11),
+                ("Occasional creativity within limits.", 6),
+                ("Minimal interest in creative work.", 3)
             ]
         },
         "Social": {
-            "question": "A community group is seeking volunteers to help organize an event. What is your response?",
-            "options": [
-                ("Immediately volunteer, excited to engage and support others.", 35),
-                ("Offer help if time allows, appreciating group activities.", 30),
-                ("Join the group but prefer smaller, specific tasks.", 22),
-                ("Join as an observer but prefer minimal involvement.", 12),
-                ("Avoid participating, preferring individual activities.", 5)
+            "question_1": "How do you engage with communities?",
+            "options_1": [
+                ("Actively participate and lead events.", 18),
+                ("Support events if time allows.", 15),
+                ("Contribute occasionally.", 11),
+                ("Observe without much involvement.", 6),
+                ("Avoid participation.", 3)
+            ],
+            "question_2": "How do you handle group work?",
+            "options_2": [
+                ("Take the lead and guide others.", 18),
+                ("Participate actively but prefer not to lead.", 15),
+                ("Support quietly while following.", 11),
+                ("Engage minimally, focusing on your part.", 6),
+                ("Work best individually.", 3)
             ]
         },
         "Enterprising": {
-            "question": "You’re in a meeting where a new project leader needs to be chosen. How do you react?",
-            "options": [
-                ("Step up as a leader, eager to guide the team.", 35),
-                ("Volunteer, interested in organizing and leading parts of the project.", 30),
-                ("Offer support but prefer not to lead.", 22),
-                ("Avoid leadership roles, focusing on following the plan.", 12),
-                ("Prefer staying in the background and avoid taking charge.", 5)
+            "question_1": "How do you approach leadership roles?",
+            "options_1": [
+                ("Take charge and organize confidently.", 18),
+                ("Lead when needed, staying adaptable.", 15),
+                ("Support leaders but prefer not to lead.", 11),
+                ("Avoid leading, focusing on tasks.", 6),
+                ("Stay in the background.", 3)
+            ],
+            "question_2": "How do you feel about taking risks?",
+            "options_2": [
+                ("Embrace calculated risks for growth.", 18),
+                ("Take some risks with careful planning.", 15),
+                ("Prefer safe approaches with occasional risks.", 11),
+                ("Avoid risks unless necessary.", 6),
+                ("Stick to secure, predictable choices.", 3)
             ]
         },
         "Conventional": {
-            "question": "You’re working on a task that lacks clear guidelines. What do you do?",
-            "options": [
-                ("Create a structure for yourself, setting up steps and organization.", 35),
-                ("Feel comfortable structuring tasks but can be flexible.", 30),
-                ("Prefer a balance of structure with some flexibility.", 22),
-                ("Struggle with setting up guidelines, preferring more flexibility.", 12),
-                ("Avoid structure, working best without specific rules or steps.", 5)
+            "question_1": "How do you approach structure?",
+            "options_1": [
+                ("Create detailed plans and follow them.", 18),
+                ("Set flexible plans but stay organized.", 15),
+                ("Balance plans with adaptability.", 11),
+                ("Prefer minimal structure, working flexibly.", 6),
+                ("Avoid structure, working spontaneously.", 3)
+            ],
+            "question_2": "How do you handle unclear tasks?",
+            "options_2": [
+                ("Create clarity with structure.", 18),
+                ("Organize with some flexibility.", 15),
+                ("Adapt to unclear tasks with balance.", 11),
+                ("Work around ambiguity.", 6),
+                ("Ignore rules, focusing on instinct.", 3)
             ]
         }
     }
 }
+
 
 
 # Initialize OpenAI client
@@ -238,39 +327,51 @@ selected_answers = {}
 # start
 # Display OCEAN traits questions with larger question text and smaller trait label
 st.markdown("### OCEAN Traits")
+
 for trait, q_data in questions["OCEAN"].items():
     # Display trait with a smaller font size
     st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
     
-    # Display question with a larger font size
-    st.markdown(f"<p style='font-size:24px;'>{q_data['question']}</p>", unsafe_allow_html=True)
-    
-    # Display answer options
-    selected_answer = st.radio(
-        "", 
-        options=[opt[0] for opt in q_data["options"]],
-        key=trait
-    )
-    st.divider()
-    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+    for sub_question, options_key in q_data.items():
+        # Display question with a larger font size
+        st.markdown(f"<p style='font-size:24px;'>{options_key['question']}</p>", unsafe_allow_html=True)
+        
+        # Display answer options
+        selected_answer = st.radio(
+            "", 
+            options=[opt[0] for opt in options_key['options']],
+            key=f"{trait}_{sub_question}"
+        )
+        st.divider()
+        
+        # Store the score for the selected option
+        selected_answers[f"{trait}_{sub_question}"] = next(score for opt, score in options_key['options'] if opt == selected_answer)
 
 # Display RIASEC traits questions with similar styling
 st.markdown("### RIASEC Traits")
+
 for trait, q_data in questions["RIASEC"].items():
     # Display trait with a smaller font size
     st.markdown(f"<p style='font-size:14px; font-weight:bold;'>{trait}</p>", unsafe_allow_html=True)
     
-    # Display question with a larger font size
-    st.markdown(f"<p style='font-size:24px;'>{q_data['question']}</p>", unsafe_allow_html=True)
-    
-    # Display answer options
-    selected_answer = st.radio(
-        "", 
-        options=[opt[0] for opt in q_data["options"]],
-        key=f"RIASEC_{trait}"
-    )
-    st.divider()
-    selected_answers[trait] = next(score for opt, score in q_data["options"] if opt == selected_answer)
+    for sub_question, options_key in q_data.items():
+        # Display question with a larger font size
+        st.markdown(f"<p style='font-size:24px;'>{options_key['question']}</p>", unsafe_allow_html=True)
+        
+        # Display answer options
+        selected_answer = st.radio(
+            "", 
+            options=[opt[0] for opt in options_key['options']],
+            key=f"RIASEC_{trait}_{sub_question}"
+        )
+        st.divider()
+        
+        # Store the score for the selected option
+        selected_answers[f"RIASEC_{trait}_{sub_question}"] = next(score for opt, score in options_key['options'] if opt == selected_answer)
+
+# Output selected answers for debugging purposes (optional)
+st.write("Selected Answers:", selected_answers)
+
 #end
 
 # input start 
