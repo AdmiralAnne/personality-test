@@ -1,4 +1,4 @@
-# 🧠 Personality-Based Career & Hobby Recommender  
+# 🧠Psychoanalytic personality assessment and career matching 
 This little app here helps you _discover_ ideal career paths and hobbies based on your unique personality traits and interests, using **RIASEC codes** and **OCEAN personality scores**.  
 
 ## 🚀 Demo App  
