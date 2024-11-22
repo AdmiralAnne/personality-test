@@ -477,13 +477,13 @@ st.divider()
 st.info(
     """
     #### Special thanks to: 
-    - **MEET DUDHAT - U21CS483
-    - **JAGADEESH - U21CS464
+    - **MEET DUDHAT - U21CS483**
+    - **JAGADEESH - U21CS464**
     
-    - **Dr P VASUKI
-    - **KAMESHWARI Ma'am
+    - **Dr P VASUKI**
+    - **KAMESHWARI Ma'am**
     
-    - **MARJIBA - U21CS474
+    - **MARJIBA - U21CS474**
     """
 )
 
