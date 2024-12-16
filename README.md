@@ -1,8 +1,8 @@
-# 🧠 Personality-Based Career & Hobby Recommender 🧠  
-An app designed to help individuals explore careers and hobbies tailored to their personality traits. Built with Streamlit, it uses **RIASEC codes** and **OCEAN personality scores** to suggest the best matches for you.  
+# 🧠 Personality-Based Career Recommender
+An app designed to help explore careers tailored to their personality traits. Built with Streamlit, it uses **RIASEC codes** and **OCEAN personality scores** to suggest the best matches for you.  
 
 📝 A Better Description  
-simplify career and hobby exploration. Users input their personality traits (RIASEC and OCEAN scores), and the app provides personalized recommendations for professions and leisure activities. The results are generated using machine learning model and a pinch of AI trained to match personality patterns with real-world roles.  
+Users input their personality traits (RIASEC and OCEAN scores), and the app provides personalized recommendations for professions and leisure activities. The results are generated using machine learning model and a pinch of AI trained to match personality patterns with real-world roles.  
 
 ✨ Some Features  
 - **Interactive Inputs**: 🎛️ Input your scores easily through an intuitive interface.  
